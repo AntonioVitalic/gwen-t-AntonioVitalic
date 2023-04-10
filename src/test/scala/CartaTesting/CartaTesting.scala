@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package CartaTesting
 
-class CartaTesting {
+import gwent.Carta
+
+class CartaTest extends munit.FunSuite with Carta {
 
 }

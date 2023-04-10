@@ -5,9 +5,9 @@ trait Jugador{
 }
 
 trait AccionesJugador {
-  def JugarCartaMano(): Unit
+  def JugarCartaMano(): Unit = {}
 
-  def RobarCartaMazo(): Unit
+  def RobarCartaMazo(): Unit = {}
 }
 
 class Usuario(val Nombre: String, var SeccionTablero: String,
