@@ -3,6 +3,24 @@ package CartaClimaTesting
 
 import gwent.{Carta, CartaClima}
 
+
+/** Una clase para testear la clase CartaClima.
+ *
+ * La carta de clima se define por su efecto.
+ *
+ * @param Efecto: Efecto de la carta
+ *
+ * @constructor Crea una nueva CartaClima con su efecto.
+ *
+ * @example
+ * {{{
+ * val CartaClima = new CartaClima("Escarcha mordiente")
+ * val Efecto = CartaClima.Efecto()
+ * println(s"La carta de clima tiene el efecto $Efecto")
+ * }}}
+ *
+ * @author Antonio Vitalic
+ */
 class CartaClimaTesting(val Efecto: String) extends munit.FunSuite with Carta {
   var Escarcha: CartaClima = _
   var Niebla: CartaClima = _

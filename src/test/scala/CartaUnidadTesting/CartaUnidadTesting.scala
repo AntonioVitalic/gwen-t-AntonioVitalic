@@ -3,6 +3,25 @@ package CartaUnidadTesting
 
 import gwent.{Carta, CartaUnidad, Usuario}
 
+
+/** Una clase para testear la clase CartaUnidad.
+ *
+ * La carta de unidad se define por su seccion del tablero y su efecto.
+ *
+ * @param SeccionTablero: Seccion del tablero en la que se encuentra la carta
+ * @param Efecto: Efecto de la carta
+ *
+ * @constructor Crea una nueva CartaUnidad con su seccion del tablero y su efecto.
+ *
+ * @example
+ * {{{
+ * val CartaUnidad = new CartaUnidad("Zona de combate cuerpo a cuerpo", "Refuerzo moral")
+ * val CuerpoACuerpo = CartaUnidad.SeccionTablero()
+ * println(s"La carta de unidad se encuentra en la seccion $CuerpoACuerpo")
+ * }}}
+ *
+ * @author Antonio Vitalic
+ */
 class CartaUnidadTesting(val SeccionTablero: String, val Efecto: String) extends munit.FunSuite with Carta {
   var Refuerzo1: CartaUnidad = _
   var Refuerzo2: CartaUnidad = _

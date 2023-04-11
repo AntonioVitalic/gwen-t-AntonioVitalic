@@ -3,6 +3,28 @@ package ComputadoraTesting
 
 import gwent.{Carta, Jugador, Computadora}
 
+
+/** Una clase para testear la clase Computadora.
+ *
+ * La Computadora se define por su nombre, su seccion del tablero, su contador de gemas, su mazo de cartas
+ *
+ * @param Nombre: Nombre de la computadora
+ * @param SeccionTablero: Seccion del tablero en la que se encuentra la computadora
+ * @param ContadorGemas: Cantidad de gemas que tiene la computadora
+ * @param MazoCartas: Mazo de cartas que tiene la computadora
+ * @param ManoCartas: Cartas que tiene en la mano la computadora
+ *
+ * @constructor Crea una nueva Computadora con su nombre, seccion del tablero, contador de gemas, mazo de cartas y mano de cartas.
+ *
+ * @example
+ * {{{
+ * val Computadora = new Computadora("Computadora", "Cuerpo a cuerpo", 2, List[Carta](), List[Carta]())
+ * val Computadora = Computadora.Nombre()
+ * println(s"El nombre de la computadora es $Nombre")
+ * }}}
+ *
+ * @author Antonio Vitalic
+ */
 class ComputadoraTesting(var Nombre: String, var SeccionTablero: String,
                          var ContadorGemas : Int, var MazoCartas: List[Carta],
                          var ManoCartas: List[Carta]) extends munit.FunSuite with Jugador {
