@@ -11,13 +11,13 @@ trait AccionesJugador {
 }
 
 class Usuario(val Nombre: String, var SeccionTablero: String,
-              var ContadorGemas: Int = 2, var MazoCartas: List[Carta],
+              var ContadorGemas: Int, var MazoCartas: List[Carta],
               var ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
 }
 
 
 class Computadora(val Nombre: String, var SeccionTablero: String,
-                  var ContadorGemas: Int = 2, var MazoCartas: List[Carta],
+                  var ContadorGemas: Int, var MazoCartas: List[Carta],
                   var ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
 }
 
