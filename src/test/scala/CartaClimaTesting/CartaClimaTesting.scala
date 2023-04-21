@@ -21,7 +21,7 @@ import gwent.{Carta, CartaClima}
  *
  * @author Antonio Vitalic
  */
-class CartaClimaTesting(val Efecto: String) extends munit.FunSuite with Carta {
+class CartaClimaTesting extends munit.FunSuite with Carta {
   var Escarcha: CartaClima = _
   var Niebla: CartaClima = _
 

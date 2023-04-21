@@ -22,7 +22,7 @@ import gwent.{Carta, CartaUnidad, Usuario}
  *
  * @author Antonio Vitalic
  */
-class CartaUnidadTesting(val SeccionTablero: String, val Efecto: String) extends munit.FunSuite with Carta {
+class CartaUnidadTesting extends munit.FunSuite with Carta {
   var Refuerzo1: CartaUnidad = _
   var Refuerzo2: CartaUnidad = _
 

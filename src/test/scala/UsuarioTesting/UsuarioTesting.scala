@@ -24,9 +24,7 @@ import gwent.{Carta, Jugador, Usuario}
  *
  * @author Antonio Vitalic
  */
-class UsuarioTesting(var Nombre: String, var SeccionTablero: String,
-                     var ContadorGemas : Int, var MazoCartas: List[Carta],
-                     var ManoCartas: List[Carta]) extends munit.FunSuite with Jugador {
+class UsuarioTesting extends munit.FunSuite with Jugador {
   var Mario: Usuario = _
   var Luigi: Usuario = _
 
