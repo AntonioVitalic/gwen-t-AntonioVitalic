@@ -25,7 +25,7 @@ import gwent.{Carta, Jugador, Computadora}
  *
  * @author Antonio Vitalic
  */
-class ComputadoraTesting extends munit.FunSuite with Jugador {
+class ComputadoraTesting extends munit.FunSuite {
   var Windows: Computadora = _
   var Mac: Computadora = _
 

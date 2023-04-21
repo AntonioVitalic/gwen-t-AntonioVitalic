@@ -22,7 +22,7 @@ import gwent.{Carta, CartaUnidad, Usuario}
  *
  * @author Antonio Vitalic
  */
-class CartaUnidadTesting extends munit.FunSuite with Carta {
+class CartaUnidadTesting extends munit.FunSuite {
   var Refuerzo1: CartaUnidad = _
   var Refuerzo2: CartaUnidad = _
 
@@ -31,10 +31,14 @@ class CartaUnidadTesting extends munit.FunSuite with Carta {
 
   // SeccionTablero no hay que testearlo en la entrega 1
   override def beforeEach(context: BeforeEach): Unit = {
-    Refuerzo1 = new CartaUnidad(SeccionTablero = "Zona de combate cuerpo a cuerpo", Efecto = "Refuerzo moral")
-    Refuerzo2 = new CartaUnidad(SeccionTablero = "Zona de combate distancia", Efecto = "Refuerzo moral")
-    Cuerpo1 = new CartaUnidad(SeccionTablero = "Zona de combate cuerpo a cuerpo", Efecto = "Refuerzo moral")
-    Cuerpo2 = new CartaUnidad(SeccionTablero = "Zona de combate cuerpo a cuerpo", Efecto = "Escarcha mordiente")
+    Refuerzo1 = new CartaUnidad(Nombre = "Carta Refuerzo1" , SeccionTablero = "Zona de combate cuerpo a cuerpo",
+      Efecto = "Refuerzo moral")
+    Refuerzo2 = new CartaUnidad(Nombre = "Carta Refuerzo2" , SeccionTablero = "Zona de combate distancia",
+      Efecto = "Refuerzo moral")
+    Cuerpo1 = new CartaUnidad(Nombre = "Carta Cuerpo1" , SeccionTablero = "Zona de combate cuerpo a cuerpo",
+      Efecto = "Refuerzo moral")
+    Cuerpo2 = new CartaUnidad(Nombre = "Carta Cuerpo2" , SeccionTablero = "Zona de combate cuerpo a cuerpo",
+      Efecto = "Escarcha mordiente")
   }
 
   test("Una CartaUnidad debe tener SeccionTablero") {

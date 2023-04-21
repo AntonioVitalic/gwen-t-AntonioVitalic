@@ -101,16 +101,8 @@ trait Carta{
  *
  * @author Antonio Vitalic
  */
-class Usuario extends Jugador with AccionesJugador{
-  override def Nombre(): String = {}
-
-  override def SeccionTablero(): String = {}
-
-  override def ContadorGemas(): Int = {}
-
-  override def MazoCartas(): List[Carta] = {}
-
-  override def ManoCartas(): List[Carta] = {}
+class Usuario (val Nombre: String, var SeccionTablero: String, var ContadorGemas: Int,
+               var MazoCartas: List[Carta], var ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
 
   override def JugarCartaMano(): Unit = {}
 
@@ -140,16 +132,8 @@ class Usuario extends Jugador with AccionesJugador{
  *
  * @author Antonio Vitalic
  */
-class Computadora extends Jugador with AccionesJugador{
-  override def Nombre(): String = {}
-
-  override def SeccionTablero(): String = {}
-
-  override def ContadorGemas(): Int = {}
-
-  override def MazoCartas(): List[Carta] = {}
-
-  override def ManoCartas(): List[Carta] = {}
+class Computadora (val Nombre: String, var SeccionTablero: String, var ContadorGemas: Int,
+                   var MazoCartas: List[Carta], var ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
 
   override def JugarCartaMano(): Unit = {}
 
@@ -161,6 +145,7 @@ class Computadora extends Jugador with AccionesJugador{
  *
  * La carta de unidad se define por su seccion del tablero y su efecto.
  *
+ * @param Nombre: Nombre de la carta
  * @param SeccionTablero: Seccion del tablero en la que se encuentra la carta
  * @param Efecto: Efecto de la carta
  *
@@ -175,14 +160,10 @@ class Computadora extends Jugador with AccionesJugador{
  *
  * @author Antonio Vitalic
  */
-class CartaUnidad extends Carta{
+class CartaUnidad (val Nombre: String, val SeccionTablero: String, val Efecto: String) extends Carta{
   // SeccionTablero puede ser "Zona de combate cuerpo a cuerpo", "Zona de combate distancia" o "Zona de asedio"
   // Efecto puede ser "Refuerzo moral" o "Vinculo estrecho"
-  override def Nombre(): String = ""
 
-  override def SeccionTablero(): String = ""
-
-  override def Efecto(): String = ""
 }
 
 /** Una clase que representa una carta de clima.
@@ -202,12 +183,8 @@ class CartaUnidad extends Carta{
  *
  * @author Antonio Vitalic
  */
-class CartaClima extends Carta{
+class CartaClima (val Nombre: String, val SeccionTablero: String, val Efecto: String) extends Carta{
   // Efecto puede ser "Escarcha mordiente", "Niebla impenetrable", "Lluvia torrencial" o "Clima despejado"
   // SeccionTablero sólo es "Clima"
-  override def Nombre(): String = ""
 
-  override def SeccionTablero(): String = "Clima"
-
-  override def Efecto(): String = ""
 }

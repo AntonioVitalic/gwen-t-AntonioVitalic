@@ -7,12 +7,6 @@ import gwent.{Carta, Jugador, Usuario}
  *
  * El Usuario se define por su nombre, su seccion del tablero, su contador de gemas, su mazo de cartas
  *
- * @param Nombre: Nombre del usuario
- * @param SeccionTablero: Seccion del tablero en la que se encuentra el usuario
- * @param ContadorGemas: Cantidad de gemas que tiene el usuario
- * @param MazoCartas: Mazo de cartas que tiene el usuario
- * @param ManoCartas: Cartas que tiene en la mano el usuario
- *
  * @constructor Crea un nuevo Usuario con su nombre, seccion del tablero, contador de gemas, mazo de cartas y mano de cartas.
  *
  * @example
@@ -24,7 +18,7 @@ import gwent.{Carta, Jugador, Usuario}
  *
  * @author Antonio Vitalic
  */
-class UsuarioTesting extends munit.FunSuite with Jugador {
+class UsuarioTesting extends munit.FunSuite{
   var Mario: Usuario = _
   var Luigi: Usuario = _
 

@@ -21,14 +21,14 @@ import gwent.{Carta, CartaClima}
  *
  * @author Antonio Vitalic
  */
-class CartaClimaTesting extends munit.FunSuite with Carta {
+class CartaClimaTesting extends munit.FunSuite {
   var Escarcha: CartaClima = _
   var Niebla: CartaClima = _
 
   // SeccionTablero no hay que testearlo en la entrega 1
   override def beforeEach(context: BeforeEach): Unit = {
-    Escarcha = new CartaClima(Efecto = "Escarcha mordiente")
-    Niebla = new CartaClima(Efecto = "Niebla impenetrable")
+    Escarcha = new CartaClima(Nombre = "Carta Escarcha",  SeccionTablero = "Clima", Efecto = "Escarcha mordiente")
+    Niebla = new CartaClima(Nombre = "Carta Niebla",  SeccionTablero = "Clima", Efecto = "Niebla impenetrable")
   }
 
   test("Una CartaClima debe tener Efecto") {
