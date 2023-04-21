@@ -8,17 +8,21 @@ This work is licensed under a
 
 **Contexto:**
 
-Este repositorio corresponde a la Entrega Parcial 1 del Proyecto consistente en un clon (simplificado)
+Este repositorio corresponde al proyecto consistente en un clon (simplificado)
 del juego de cartas [_Gwent_](https://www.playgwent.com/en) desarrollado por [_CD PROJEKT RED_](https://cdprojektred.com/en/) para su franquicia de videojuegos The Witcher.
 A grandes rasgos el juego tendrá dos jugadores, uno controlado por el usuario y otro controlado por la computadora.
 Cada jugador tendrá un mazo y una mano de cartas que puede jugar en un tablero en una partida al mejor de tres
 rondas.
 
-En específico, se aplicó la
+En específico, para la Entrega Parcial 1 de la Tarea 1, se aplicó la
 estrategia de test-driven development para implementar los elementos básicos
 del juego: Jugador y Carta, señaladas en las secciones 1.1 Jugador y 1.3 Carta del
 documento [Enunciado Proyecto V1.0.1.pdf](https://www.u-cursos.cl/ingenieria/2023/1/CC3002/2/material_docente/detalle?id=6440453) en material docente del curso, a excepción de las funcionalidades
 que involucren al Tablero y/o las Clasificaciones de las cartas.
+
+A su vez, para la Tarea 1, se aplicó el concepto de herencia para las implementaciones
+de las clases y métodos, además de la sobreescritura de parámteros y métodos, y finalmente
+el testeo con el método Equals.
 
 **Descripción**
 

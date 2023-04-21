@@ -6,11 +6,31 @@ package gwent
  * Representa a un jugador, que puede ser un usuario o una computadora.
  * Dado que se programa en Scala 2, no lleva parámetros.
  *
+ * Se declaran los parámetros que debe tener un jugador, los cuales son:
+ * Nombre: Nombre del jugador
+ * SeccionTablero: Seccion del tablero en la que se encuentra el jugador
+ * ContadorGemas: Cantidad de gemas que tiene el jugador
+ * MazoCartas: Mazo de cartas que tiene el jugador
+ * ManoCartas: Cartas que tiene en la mano el jugador
+ *
+ * Este trait luego de hereda en la clase Usuario y en la clase Computadora, donde
+ * se implementan los métodos usando override.
  *
  * @author Antonio Vitalic
  */
 trait Jugador{
+  def Nombre(): String
+
+  def SeccionTablero(): String
+
+  def ContadorGemas(): Int
+
+  def MazoCartas(): List[Carta]
+
+  def ManoCartas(): List[Carta]
 }
+
+
 
 
 /** Trait (interfaz) que representa las acciones que puede realizar un jugador.
@@ -19,13 +39,45 @@ trait Jugador{
  * robar una carta del mazo.
  * Dado que se programa en Scala 2, no lleva parámetros.
  *
+ * Se declaran los métodos que debe tener un jugador, los cuales son:
+ * JugarCartaMano: Juega una carta de la mano del jugador
+ * RobarCartaMazo: Roba una carta del mazo del jugador
+ *
+ * Este trait luego de hereda en la clase Usuario y en la clase Computadora, donde
+ * se implementan los métodos usando override.
  *
  * @author Antonio Vitalic
  */
 trait AccionesJugador {
-  def JugarCartaMano(): Unit = {}
+  def JugarCartaMano(): Unit
 
-  def RobarCartaMazo(): Unit = {}
+  def RobarCartaMazo(): Unit
+}
+
+// Para la Tarea 1, solo se pide la seccion 1.1 Jugador y 1.3 Cartas, a excepción
+// de las funcionalidades que involucren al Tablero y/o las Clasificaciones de las Cartas
+
+/** Trait (interfaz) que representa las cartas.
+ *
+ * Representa las cartas del juego Gwent. Son utilizadas por Usuario y Computadora.
+ * Dado que se programa en Scala 2, no lleva parámetros.
+ *
+ * Se declaran los parámetros que debe tener una carta, los cuales son:
+ * Nombre: Nombre de la carta
+ * SeccionTablero: Seccion del tablero en la que se encuentra la carta
+ * Efecto: Efecto de la carta
+ *
+ * Este trait luego de hereda en la clase CartaUnidad y en la clase CartaEspecial, donde
+ * se implementan los métodos usando override.
+ *
+ * @author Antonio Vitalic
+ */
+trait Carta{
+  def Nombre(): String
+
+  def SeccionTablero(): String
+
+  def Efecto(): String
 }
 
 /** Una clase que representa un jugador (humano) llamado Usuario.
@@ -49,9 +101,21 @@ trait AccionesJugador {
  *
  * @author Antonio Vitalic
  */
-class Usuario(val Nombre: String, var SeccionTablero: String,
-              var ContadorGemas: Int, var MazoCartas: List[Carta],
-              var ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
+class Usuario extends Jugador with AccionesJugador{
+  override def Nombre(): String = {}
+
+  override def SeccionTablero(): String = {}
+
+  override def ContadorGemas(): Int = {}
+
+  override def MazoCartas(): List[Carta] = {}
+
+  override def ManoCartas(): List[Carta] = {}
+
+  override def JugarCartaMano(): Unit = {}
+
+  override def RobarCartaMazo(): Unit = {}
+
 }
 
 
@@ -76,23 +140,21 @@ class Usuario(val Nombre: String, var SeccionTablero: String,
  *
  * @author Antonio Vitalic
  */
-class Computadora(val Nombre: String, var SeccionTablero: String,
-                  var ContadorGemas: Int, var MazoCartas: List[Carta],
-                  var ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
-}
+class Computadora extends Jugador with AccionesJugador{
+  override def Nombre(): String = {}
 
-// Para la entrega 1, solo se pide la seccion 1.1 Jugador y 1.3 Cartas, por lo que
-// no se implementarán los efectos de las cartas
+  override def SeccionTablero(): String = {}
 
-/** Trait (interfaz) que representa las cartas.
- *
- * Representa las cartas del juego Gwent. Son utilizadas por Usuario y Computadora.
- * Dado que se programa en Scala 2, no lleva parámetros.
- *
- *
- * @author Antonio Vitalic
- */
-trait Carta{
+  override def ContadorGemas(): Int = {}
+
+  override def MazoCartas(): List[Carta] = {}
+
+  override def ManoCartas(): List[Carta] = {}
+
+  override def JugarCartaMano(): Unit = {}
+
+  override def RobarCartaMazo(): Unit = {}
+
 }
 
 /** Una clase que representa una carta de unidad.
@@ -113,10 +175,14 @@ trait Carta{
  *
  * @author Antonio Vitalic
  */
-class CartaUnidad(val SeccionTablero: String, val Efecto: String) extends Carta{
+class CartaUnidad extends Carta{
   // SeccionTablero puede ser "Zona de combate cuerpo a cuerpo", "Zona de combate distancia" o "Zona de asedio"
   // Efecto puede ser "Refuerzo moral" o "Vinculo estrecho"
+  override def Nombre(): String = ""
 
+  override def SeccionTablero(): String = ""
+
+  override def Efecto(): String = ""
 }
 
 /** Una clase que representa una carta de clima.
@@ -136,6 +202,12 @@ class CartaUnidad(val SeccionTablero: String, val Efecto: String) extends Carta{
  *
  * @author Antonio Vitalic
  */
-class CartaClima(val Efecto: String) extends Carta{
+class CartaClima extends Carta{
   // Efecto puede ser "Escarcha mordiente", "Niebla impenetrable", "Lluvia torrencial" o "Clima despejado"
+  // SeccionTablero sólo es "Clima"
+  override def Nombre(): String = ""
+
+  override def SeccionTablero(): String = "Clima"
+
+  override def Efecto(): String = ""
 }
