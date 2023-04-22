@@ -1,15 +1,12 @@
 package cl.uchile.dcc
 package CartaUnidadTesting
 
-import gwent.{Carta, CartaUnidad, Usuario}
+import gwent.CartaUnidad
 
 
 /** Una clase para testear la clase CartaUnidad.
  *
  * La carta de unidad se define por su seccion del tablero y su efecto.
- *
- * @param SeccionTablero: Seccion del tablero en la que se encuentra la carta
- * @param Efecto: Efecto de la carta
  *
  * @constructor Crea una nueva CartaUnidad con su seccion del tablero y su efecto.
  *

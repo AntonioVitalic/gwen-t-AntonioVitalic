@@ -1,14 +1,12 @@
 package cl.uchile.dcc
 package CartaClimaTesting
 
-import gwent.{Carta, CartaClima}
+import gwent.CartaClima
 
 
 /** Una clase para testear la clase CartaClima.
  *
  * La carta de clima se define por su efecto.
- *
- * @param Efecto: Efecto de la carta
  *
  * @constructor Crea una nueva CartaClima con su efecto.
  *

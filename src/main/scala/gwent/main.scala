@@ -84,11 +84,11 @@ trait Carta{
  *
  * El Usuario se define por su nombre, su seccion del tablero, su contador de gemas, su mazo de cartas
  *
- * @param Nombre: Nombre del usuario
- * @param SeccionTablero: Seccion del tablero en la que se encuentra el usuario
- * @param ContadorGemas: Cantidad de gemas que tiene el usuario
- * @param MazoCartas: Mazo de cartas que tiene el usuario
- * @param ManoCartas: Cartas que tiene en la mano el usuario
+ * @param _Nombre: Nombre del usuario
+ * @param _SeccionTablero: Seccion del tablero en la que se encuentra el usuario
+ * @param _ContadorGemas: Cantidad de gemas que tiene el usuario
+ * @param _MazoCartas: Mazo de cartas que tiene el usuario
+ * @param _ManoCartas: Cartas que tiene en la mano el usuario
  *
  * @constructor Crea un nuevo Usuario con su nombre, seccion del tablero, contador de gemas, mazo de cartas y mano de cartas.
  *
@@ -101,12 +101,28 @@ trait Carta{
  *
  * @author Antonio Vitalic
  */
-class Usuario (val Nombre: String, var SeccionTablero: String, var ContadorGemas: Int,
-               var MazoCartas: List[Carta], var ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
+class Usuario (val _Nombre: String, var _SeccionTablero: String, var _ContadorGemas: Int = 2,
+               var _MazoCartas: List[Carta], var _ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
 
   override def JugarCartaMano(): Unit = {}
 
   override def RobarCartaMazo(): Unit = {}
+
+  def Nombre(): String = _Nombre // getter para el nombre
+
+  def SeccionTablero(): String = _SeccionTablero // getter para la seccion del tablero
+
+  def ContadorGemas(): Int = _ContadorGemas  // getter para el contador de gemas
+
+  def MazoCartas(): List[Carta] = _MazoCartas // getter para el mazo de cartas
+
+  def ManoCartas(): List[Carta] = _ManoCartas // getter para la mano de cartas
+
+
+  def SeccionTablero_=(SeccionTablero: String): Unit = _SeccionTablero = SeccionTablero // setter para la seccion del tablero
+
+  def ContadorGemas_=(ContadorGemas: Int): Unit = _ContadorGemas = ContadorGemas // setter para el contador de gemas
+
 
 }
 
@@ -115,11 +131,11 @@ class Usuario (val Nombre: String, var SeccionTablero: String, var ContadorGemas
  *
  * La Computadora se define por su nombre, su seccion del tablero, su contador de gemas, su mazo de cartas
  *
- * @param Nombre: Nombre de la computadora
- * @param SeccionTablero: Seccion del tablero en la que se encuentra la computadora
- * @param ContadorGemas: Cantidad de gemas que tiene la computadora
- * @param MazoCartas: Mazo de cartas que tiene la computadora
- * @param ManoCartas: Cartas que tiene en la mano la computadora
+ * @param _Nombre: Nombre de la computadora
+ * @param _SeccionTablero: Seccion del tablero en la que se encuentra la computadora
+ * @param _ContadorGemas: Cantidad de gemas que tiene la computadora
+ * @param _MazoCartas: Mazo de cartas que tiene la computadora
+ * @param _ManoCartas: Cartas que tiene en la mano la computadora
  *
  * @constructor Crea una nueva Computadora con su nombre, seccion del tablero, contador de gemas, mazo de cartas y mano de cartas.
  *
@@ -132,12 +148,27 @@ class Usuario (val Nombre: String, var SeccionTablero: String, var ContadorGemas
  *
  * @author Antonio Vitalic
  */
-class Computadora (val Nombre: String, var SeccionTablero: String, var ContadorGemas: Int,
-                   var MazoCartas: List[Carta], var ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
+class Computadora (val _Nombre: String, var _SeccionTablero: String, var _ContadorGemas: Int,
+                   var _MazoCartas: List[Carta], var _ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
 
   override def JugarCartaMano(): Unit = {}
 
   override def RobarCartaMazo(): Unit = {}
+
+  def Nombre(): String = _Nombre // getter para el nombre
+
+  def SeccionTablero(): String = _SeccionTablero // getter para la seccion del tablero
+
+  def ContadorGemas(): Int = _ContadorGemas // getter para el contador de gemas
+
+  def MazoCartas(): List[Carta] = _MazoCartas // getter para el mazo de cartas
+
+  def ManoCartas(): List[Carta] = _ManoCartas // getter para la mano de cartas
+
+
+  def SeccionTablero_=(SeccionTablero: String): Unit = _SeccionTablero = SeccionTablero // setter para la seccion del tablero
+
+  def ContadorGemas_=(ContadorGemas: Int): Unit = _ContadorGemas = ContadorGemas // setter para el contador de gemas
 
 }
 
