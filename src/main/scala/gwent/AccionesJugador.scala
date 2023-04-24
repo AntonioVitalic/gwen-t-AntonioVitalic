@@ -19,7 +19,7 @@ package gwent
  * @author Antonio Vitalic
  */
 trait AccionesJugador {
-  def JugarCartaMano(): Unit
+   // def JugarCartaMano(): Unit por implementar
 
   def RobarCartaMazo(): Unit
 }

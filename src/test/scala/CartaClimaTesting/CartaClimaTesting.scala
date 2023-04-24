@@ -30,8 +30,8 @@ class CartaClimaTesting extends munit.FunSuite {
   }
 
   test("Una CartaClima debe tener Efecto") {
-    assertEquals(Escarcha.Efecto, "Refuerzo moral")
-    assertEquals(Niebla.Efecto, "Refuerzo moral")
+    assertEquals(Escarcha.Efecto, "Escarcha mordiente")
+    assertEquals(Niebla.Efecto, "Niebla impenetrable")
   }
   test("CartaClima's con distinto Efecto son distintos") {
     assert(!Escarcha.equals(Niebla))

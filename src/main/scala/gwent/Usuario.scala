@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package gwent
 
+import scala.util.Random.shuffle
 /** Una clase que representa un jugador (humano) llamado Usuario.
  *
  * El Usuario se define por su nombre, su seccion del tablero, su contador de gemas, su mazo de cartas
@@ -27,10 +28,13 @@ class Usuario (val _Nombre: String, var _SeccionTablero: String, var _ContadorGe
                var _MazoCartas: List[Carta], var _ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
 
   // Selecciona una carta de su mano y la coloca en el tablero para realizar una acción
-  override def JugarCartaMano(): Unit = {}
+  // override def JugarCartaMano(): Unit = {} por implementar
 
   // Roba o toma una carta del mazo y la agrega en su mano
-  override def RobarCartaMazo(): Unit = {}
+  override def RobarCartaMazo(): Unit = {
+    _ManoCartas = _ManoCartas.::(_MazoCartas.head) // agrega la primera carta del mazo a la mano
+    _MazoCartas = _MazoCartas.tail // elimina la primera carta del mazo
+  }
 
   def Nombre(): String = _Nombre // getter para el nombre
 
