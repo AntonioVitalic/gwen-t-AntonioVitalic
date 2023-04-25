@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package UsuarioTesting
-import gwent.{Carta, CartaClima, CartaUnidad, Usuario}
+import gwent.{Carta, CartaClima, CartaUnidad, Computadora, Usuario}
+
+import org.junit.Assert.assertThrows
 
 
 /** Una clase para testear la clase Usuario.
@@ -18,7 +20,7 @@ import gwent.{Carta, CartaClima, CartaUnidad, Usuario}
  *
  * @author Antonio Vitalic
  */
-class UsuarioTesting extends munit.FunSuite{
+class UsuarioTesting extends munit.FunSuite {
   var Usuario1MismoNombre: Usuario = _
   var Usuario2MismoNombre: Usuario = _
 
@@ -30,6 +32,13 @@ class UsuarioTesting extends munit.FunSuite{
   var Carta2: CartaClima = _
   var Carta3: CartaUnidad = _
   var Carta4: CartaClima = _
+
+  var UsuarioEquals: Usuario = _
+  var ComputadoraEquals: Computadora = _
+  var CartaUnidadEquals: CartaUnidad = _
+  var CartaClimaEquals: CartaClima = _
+
+  var UsuarioToadette: Usuario = _
 
   // SeccionTablero no hay que testearlo en la entrega 1
   override def beforeEach(context: BeforeEach): Unit = {
@@ -53,6 +62,19 @@ class UsuarioTesting extends munit.FunSuite{
     Carta2 = new CartaClima("Carta2", "Clima", "Escarcha mordiente")
     Carta3 = new CartaUnidad("Carta3", "Distancia", "Refuerzo moral")
     Carta4 = new CartaClima("Carta4", "Clima", "Niebla impenetrable")
+
+    UsuarioEquals = new Usuario(_Nombre = "Metal Mario", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+
+    ComputadoraEquals = new Computadora(_Nombre = "ROB", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+
+    CartaUnidadEquals = new CartaUnidad("CartaUnidadEquals", "Cuerpo a cuerpo", "Refuerzo moral")
+
+    CartaClimaEquals = new CartaClima("CartaClimaEquals", "Clima", "Escarcha mordiente")
+
+    UsuarioToadette = new Usuario(_Nombre = "Toadette", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
   }
 
   test("Un Usuario debe tener nombre") {
@@ -102,13 +124,70 @@ class UsuarioTesting extends munit.FunSuite{
 
   test("Luego de robar una carta, la cantidad de cartas de un Usuario (_ManoCartas, siendo un List[Carta]) debe aumentar en 1, y la cantidad de cartas del mazo (_MazoCartas, siendo un List[Carta]) debe disminuir en 1") {
     UsuarioDistancia._ManoCartas = List(Carta1, Carta2)
-    UsuarioDistancia._MazoCartas = List(Carta3 ,Carta4)
+    UsuarioDistancia._MazoCartas = List(Carta3, Carta4)
     UsuarioDistancia.RobarCartaMazo()
 
     assertEquals(UsuarioDistancia._ManoCartas.length, 3)
     assertEquals(UsuarioDistancia._MazoCartas.length, 1)
   }
 
+  test("Un Usuario no es una Computadora") {
+    assert(!UsuarioEquals.equals(ComputadoraEquals))
+  }
 
+  test("Un Usuario no es una CartaUnidad") {
+    assert(!UsuarioEquals.equals(CartaUnidadEquals))
+  }
 
+  test("Un Usuario no es una CartaClima") {
+    assert(!UsuarioEquals.equals(CartaClimaEquals))
+  }
+
+  test("Getter Nombre") {
+    val UsuarioToad = new Usuario(_Nombre = "Toad", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+    assert(UsuarioToad.Nombre == "Toad")
+  }
+
+  test("Getter SeccionTablero") {
+    val UsuarioToad = new Usuario(_Nombre = "Toad", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+    assert(UsuarioToad.SeccionTablero == "Cuerpo a cuerpo")
+  }
+
+  test("Getter ContadorGemas") {
+    val UsuarioToad = new Usuario(_Nombre = "Toad", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+    assert(UsuarioToad.ContadorGemas == 2)
+  }
+
+  test("Getter MazoCartas") {
+    val UsuarioToad = new Usuario(_Nombre = "Toad", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+    assert(UsuarioToad.MazoCartas == List[Carta]())
+  }
+
+  test("Getter ManoCartas") {
+    val UsuarioToad = new Usuario(_Nombre = "Toad", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+    assert(UsuarioToad.ManoCartas == List[Carta]())
+  }
+
+  test("Setter SeccionTablero") {
+    UsuarioToadette.SeccionTablero_= ("Distancia")
+    assert(UsuarioToadette._SeccionTablero == "Distancia")
+  }
+
+  test("Setter ContadorGemas") {
+    UsuarioToadette.ContadorGemas_= (1)
+    assert(UsuarioToadette._ContadorGemas == 1)
+  }
+
+  test("_MazoCartas es vacío") {
+    val UsuarioLuma = new Usuario(_Nombre = "Luma", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List(), _ManoCartas = List[Carta]())
+    assert(UsuarioLuma._MazoCartas.isEmpty)
+    UsuarioLuma.RobarCartaMazo()
+    assertEquals(UsuarioLuma._MazoCartas.length, 0)
+  }
 }

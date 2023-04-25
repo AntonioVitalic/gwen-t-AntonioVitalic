@@ -36,8 +36,15 @@ class Usuario (val _Nombre: String, var _SeccionTablero: String, var _ContadorGe
 
   // Roba o toma una carta del mazo y la agrega en su mano
   override def RobarCartaMazo(): Unit = {
-    _ManoCartas = _ManoCartas.::(_MazoCartas.head) // agrega la primera carta del mazo a la mano
-    _MazoCartas = _MazoCartas.tail // elimina la primera carta del mazo
+    if (_MazoCartas.isEmpty) {
+      _ManoCartas = _ManoCartas // no hace nada si el mazo esta vacio
+      _MazoCartas = _MazoCartas // no hace nada si el mazo esta vacio
+    }
+    else {
+      println("Robando carta del mazo")
+      _ManoCartas = _ManoCartas.::(_MazoCartas.head) // agrega la primera carta del mazo a la mano
+      _MazoCartas = _MazoCartas.tail // elimina la primera carta del mazo
+    }
   }
 
   def Nombre(): String = _Nombre // getter para el nombre

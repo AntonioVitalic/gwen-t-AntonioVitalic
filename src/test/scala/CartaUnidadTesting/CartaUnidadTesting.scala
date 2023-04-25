@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package CartaUnidadTesting
 
-import gwent.CartaUnidad
+import gwent.{Carta, CartaClima, CartaUnidad, Computadora, Usuario}
 
 
 /** Una clase para testear la clase CartaUnidad.
@@ -35,6 +35,12 @@ class CartaUnidadTesting extends munit.FunSuite {
   // Similarmente, se están testeando CartaUnidad con distinta sección del tablero y mismo efecto, por lo que
   // no se pierde generalidad al usar "Asedio" en todas las cartas definidas anteriormente
 
+  var UsuarioEquals: Usuario = _
+  var ComputadoraEquals: Computadora = _
+  var CartaUnidadEquals: CartaUnidad = _
+  var CartaClimaEquals: CartaClima = _
+
+
   override def beforeEach(context: BeforeEach): Unit = {
     CartaUnidad1MismoNombre = new CartaUnidad(Nombre = "Mismo nombre", SeccionTablero = "Cuerpo a cuerpo",
       Efecto = "Refuerzo moral")
@@ -55,6 +61,16 @@ class CartaUnidadTesting extends munit.FunSuite {
 
     CartaAsedioVinculo = new CartaUnidad(Nombre = "Carta Asedio Vinculo", SeccionTablero = "Asedio",
       Efecto = "Vinculo estrecho")
+
+    UsuarioEquals = new Usuario(_Nombre = "Usuario", _SeccionTablero = "Cuerpo a cuerpo", _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+
+    ComputadoraEquals = new Computadora(_Nombre = "Computadora", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+
+    CartaUnidadEquals = new CartaUnidad("Carta1", "Cuerpo a cuerpo", "Refuerzo moral")
+
+    CartaClimaEquals = new CartaClima("Carta2", "Clima", "Escarcha mordiente")
+
   }
 
   test("Una CartaUnidad debe tener nombre") {
@@ -83,6 +99,18 @@ class CartaUnidadTesting extends munit.FunSuite {
 
   test("Dos CartaUnidad con el mismo nombre, seccion del tablero y efecto, pero con distinto nombre de objeto,  son iguales") {
     assertEquals(CartaUnidad1MismoNombre.##, CartaUnidad2MismoNombre.##)
+  }
+
+  test("Una CartaUnidad no es un Usuario") {
+    assert(!CartaUnidadEquals.equals(UsuarioEquals))
+  }
+
+  test("Un CartaUnidad no es una Computadora") {
+    assert(!CartaUnidadEquals.equals(ComputadoraEquals))
+  }
+
+  test("Un Carta Unidad no es una CartaClima") {
+    assert(!CartaUnidadEquals.equals(CartaClimaEquals))
   }
 
 }

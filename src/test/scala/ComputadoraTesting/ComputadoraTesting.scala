@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package ComputadoraTesting
 
-import gwent.{Carta, CartaClima, CartaUnidad, Computadora}
+import gwent.{Carta, CartaClima, CartaUnidad, Computadora, Usuario}
 
 
 /** Una clase para testear la clase Computadora.
@@ -32,6 +32,14 @@ class ComputadoraTesting extends munit.FunSuite {
   var Carta3: CartaUnidad = _
   var Carta4: CartaClima = _
 
+  var UsuarioEquals: Usuario = _
+  var ComputadoraEquals: Computadora = _
+  var CartaUnidadEquals: CartaUnidad = _
+  var CartaClimaEquals: CartaClima = _
+
+  var ComputadoraGetSet: Computadora = _
+
+
   // SeccionTablero no hay que testearlo en la entrega 1
   override def beforeEach(context: BeforeEach): Unit = {
     Computadora1MismoNombre = new Computadora(_Nombre = "Mismo Nombre", _SeccionTablero = "Cuerpo a cuerpo",
@@ -53,6 +61,17 @@ class ComputadoraTesting extends munit.FunSuite {
     Carta3 = new CartaUnidad("Carta3", "Distancia", "Refuerzo moral")
     Carta4 = new CartaClima("Carta4", "Clima", "Niebla impenetrable")
 
+    UsuarioEquals = new Usuario(_Nombre = "Usuario", _SeccionTablero = "Cuerpo a cuerpo", _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+
+    ComputadoraEquals = new Computadora(_Nombre = "Computadora", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+
+    CartaUnidadEquals = new CartaUnidad("Carta1", "Cuerpo a cuerpo", "Refuerzo moral")
+
+    CartaClimaEquals = new CartaClima("Carta2", "Clima", "Escarcha mordiente")
+
+    ComputadoraGetSet = new Computadora(_Nombre = "Computadora", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
 
   }
 
@@ -101,5 +120,64 @@ class ComputadoraTesting extends munit.FunSuite {
     assertEquals(ComputadoraDistancia._MazoCartas.length, 1)
   }
 
+  test("Un Computadora no es un Usuario") {
+    assert(!ComputadoraEquals.equals(UsuarioEquals))
+  }
+
+  test("Un Computadora no es una CartaUnidad") {
+    assert(!ComputadoraEquals.equals(CartaUnidadEquals))
+  }
+
+  test("Un Computadora no es una CartaClima") {
+    assert(!ComputadoraEquals.equals(CartaClimaEquals))
+  }
+
+  test("Getter Nombre") {
+    val ComputadoraPC = new Computadora(_Nombre = "PC", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+    assert(ComputadoraPC.Nombre == "PC")
+  }
+
+  test("Getter SeccionTablero") {
+    val ComputadoraPC = new Computadora(_Nombre = "PC", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+    assert(ComputadoraPC.SeccionTablero == "Cuerpo a cuerpo")
+  }
+
+  test("Getter ContadorGemas") {
+    val ComputadoraPC = new Computadora(_Nombre = "PC", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+    assert(ComputadoraPC.ContadorGemas == 2)
+  }
+
+  test("Getter MazoCartas") {
+    val ComputadoraPC = new Computadora(_Nombre = "PC", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+    assert(ComputadoraPC.MazoCartas == List[Carta]())
+  }
+
+  test("Getter ManoCartas") {
+    val ComputadoraPC = new Computadora(_Nombre = "PC", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+    assert(ComputadoraPC.ManoCartas == List[Carta]())
+  }
+
+  test("Setter SeccionTablero") {
+    ComputadoraGetSet.SeccionTablero_= ("Distancia")
+    assert(ComputadoraGetSet._SeccionTablero == "Distancia")
+  }
+
+  test("Setter ContadorGemas") {
+    ComputadoraGetSet.ContadorGemas_= (1)
+    assert(ComputadoraGetSet._ContadorGemas == 1)
+  }
+
+  test("_MazoCartas es vacío") {
+    val UsuarioCaja = new Computadora(_Nombre = "Caja", _SeccionTablero = "Cuerpo a cuerpo",
+      _ContadorGemas = 2, _MazoCartas = List(), _ManoCartas = List[Carta]())
+    assert(UsuarioCaja._MazoCartas.isEmpty)
+    UsuarioCaja.RobarCartaMazo()
+    assertEquals(UsuarioCaja._MazoCartas.length, 0)
+  }
 }
 
