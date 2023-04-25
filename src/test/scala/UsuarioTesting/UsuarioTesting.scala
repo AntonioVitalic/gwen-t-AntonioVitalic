@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 package UsuarioTesting
-import gwent.{Carta, Usuario}
+import gwent.{Carta, CartaClima, CartaUnidad, Usuario}
 
 
 /** Una clase para testear la clase Usuario.
@@ -19,27 +19,96 @@ import gwent.{Carta, Usuario}
  * @author Antonio Vitalic
  */
 class UsuarioTesting extends munit.FunSuite{
-  var Mario: Usuario = _
-  var Luigi: Usuario = _
+  var Usuario1MismoNombre: Usuario = _
+  var Usuario2MismoNombre: Usuario = _
+
+  var UsuarioDistancia: Usuario = _
+  var UsuarioAsedio: Usuario = _
+  var UsuarioClima: Usuario = _
+
+  var Carta1: CartaUnidad = _
+  var Carta2: CartaClima = _
+  var Carta3: CartaUnidad = _
+  var Carta4: CartaClima = _
 
   // SeccionTablero no hay que testearlo en la entrega 1
   override def beforeEach(context: BeforeEach): Unit = {
-    Mario = new Usuario(_Nombre = "Mario", _SeccionTablero = "Cuerpo a cuerpo",
+    Usuario1MismoNombre = new Usuario(_Nombre = "Mario", _SeccionTablero = "Cuerpo a cuerpo",
       _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
-    Luigi = new Usuario(_Nombre = "Luigi", _SeccionTablero = "Cuerpo a cuerpo",
+
+    Usuario2MismoNombre = new Usuario(_Nombre = "Mario", _SeccionTablero = "Cuerpo a cuerpo",
       _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+
+    UsuarioDistancia = new Usuario(_Nombre = "Peach", _SeccionTablero = "Distancia",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+
+    UsuarioAsedio = new Usuario(_Nombre = "Bowser", _SeccionTablero = "Asedio",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+
+    UsuarioClima = new Usuario(_Nombre = "DK", _SeccionTablero = "Clima",
+      _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+
+
+    Carta1 = new CartaUnidad("Carta1", "Cuerpo a cuerpo", "Refuerzo moral")
+    Carta2 = new CartaClima("Carta2", "Clima", "Escarcha mordiente")
+    Carta3 = new CartaUnidad("Carta3", "Distancia", "Refuerzo moral")
+    Carta4 = new CartaClima("Carta4", "Clima", "Niebla impenetrable")
   }
 
   test("Un Usuario debe tener nombre") {
-    assertEquals(Mario._Nombre, "Mario")
-    assertEquals(Luigi._Nombre, "Luigi")
+    assertEquals(Usuario1MismoNombre._Nombre, "Mario")
+    assertEquals(Usuario2MismoNombre._Nombre, "Mario")
+    assertEquals(UsuarioDistancia._Nombre, "Peach")
+    assertEquals(UsuarioAsedio._Nombre, "Bowser")
+    assertEquals(UsuarioClima._Nombre, "DK")
+  }
+
+  test("Un Usuario debe jugar en una sección del tablero") {
+    assertEquals(Usuario1MismoNombre._SeccionTablero, "Cuerpo a cuerpo")
+    assertEquals(Usuario2MismoNombre._SeccionTablero, "Cuerpo a cuerpo")
+    assertEquals(UsuarioDistancia._SeccionTablero, "Distancia")
+    assertEquals(UsuarioAsedio._SeccionTablero, "Asedio")
+    assertEquals(UsuarioClima._SeccionTablero, "Clima")
   }
 
   test("Un Usuario debe tener ContadorGemas igual a 2") {
-    assertEquals(Mario._ContadorGemas, 2)
-    assertEquals(Luigi._ContadorGemas, 2)
+    assertEquals(Usuario1MismoNombre._ContadorGemas, 2)
+    assertEquals(Usuario2MismoNombre._ContadorGemas, 2)
+    assertEquals(UsuarioDistancia._ContadorGemas, 2)
+    assertEquals(UsuarioAsedio._ContadorGemas, 2)
+    assertEquals(UsuarioClima._ContadorGemas, 2)
   }
-  test("Usuarios con distinto nombre (resto de parámetros iguales) son distintos") {
-    assert(!Mario.equals(Luigi))
+
+  test("Dos Usuarios con el mismo Nombre, SeccionTablero y ContadorGemas, pero con distinto nombre de objeto,  son iguales") {
+    assertEquals(Usuario1MismoNombre.##, Usuario2MismoNombre.##)
   }
+
+  test("Un Usuario debe tener un mazo de cartas") {
+    assertEquals(Usuario1MismoNombre._MazoCartas, List[Carta]())
+    assertEquals(Usuario2MismoNombre._MazoCartas, List[Carta]())
+    assertEquals(UsuarioDistancia._MazoCartas, List[Carta]())
+    assertEquals(UsuarioAsedio._MazoCartas, List[Carta]())
+    assertEquals(UsuarioClima._MazoCartas, List[Carta]())
+  }
+
+  test("Un Usuario debe tener una mano de cartas") {
+    assertEquals(Usuario1MismoNombre._ManoCartas, List[Carta]())
+    assertEquals(Usuario2MismoNombre._ManoCartas, List[Carta]())
+    assertEquals(UsuarioDistancia._ManoCartas, List[Carta]())
+    assertEquals(UsuarioAsedio._ManoCartas, List[Carta]())
+    assertEquals(UsuarioClima._ManoCartas, List[Carta]())
+  }
+
+
+  test("Luego de robar una carta, la cantidad de cartas de un Usuario (_ManoCartas, siendo un List[Carta]) debe aumentar en 1, y la cantidad de cartas del mazo (_MazoCartas, siendo un List[Carta]) debe disminuir en 1") {
+    UsuarioDistancia._ManoCartas = List(Carta1, Carta2)
+    UsuarioDistancia._MazoCartas = List(Carta3 ,Carta4)
+    UsuarioDistancia.RobarCartaMazo()
+
+    assertEquals(UsuarioDistancia._ManoCartas.length, 3)
+    assertEquals(UsuarioDistancia._MazoCartas.length, 1)
+  }
+
+
+
 }

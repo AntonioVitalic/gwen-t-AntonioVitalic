@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package gwent
 
+import java.util.Objects
 import scala.util.Random.shuffle
 /** Una clase que representa un jugador (humano) llamado Usuario.
  *
@@ -26,6 +27,9 @@ import scala.util.Random.shuffle
 
 class Usuario (val _Nombre: String, var _SeccionTablero: String, var _ContadorGemas: Int = 2,
                var _MazoCartas: List[Carta], var _ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
+
+  override def hashCode: Int = Objects.hash(_Nombre, _SeccionTablero, _ContadorGemas, _MazoCartas, _ManoCartas)
+
 
   // Selecciona una carta de su mano y la coloca en el tablero para realizar una acción
   // override def JugarCartaMano(): Unit = {} por implementar

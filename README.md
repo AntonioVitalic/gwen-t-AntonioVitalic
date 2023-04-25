@@ -21,7 +21,7 @@ documento [Enunciado Proyecto V1.0.1.pdf](https://www.u-cursos.cl/ingenieria/202
 que involucren al Tablero y/o las Clasificaciones de las cartas.
 
 A su vez, para la Tarea 1, se aplicó el concepto de herencia para las implementaciones
-de las clases y métodos, además de la sobreescritura de parámteros y métodos, y finalmente
+de las clases y métodos, además de la sobre-escritura de parámetros y métodos, y finalmente
 el testeo con el método Equals.
 
 **Descripción**

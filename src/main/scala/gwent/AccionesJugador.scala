@@ -9,8 +9,7 @@ package gwent
  * robar una carta del mazo.
  * Dado que se programa en Scala 2, no lleva parámetros.
  *
- * Se declaran los métodos que debe tener un jugador, los cuales son:
- * JugarCartaMano: Juega una carta de la mano del jugador
+ * Se declaran los métodos que debe tener un jugador, el cual -por ahora- solo será el siguiente:
  * RobarCartaMazo: Roba una carta del mazo del jugador
  *
  * Este trait luego de hereda en la clase Usuario y en la clase Computadora, donde
@@ -21,5 +20,11 @@ package gwent
 trait AccionesJugador {
    // def JugarCartaMano(): Unit por implementar
 
+  /** Roba una carta del mazo del jugador.
+   *
+   * Roba una carta del mazo del jugador y la agrega a su mano.
+   *
+   * @return Unit
+   */
   def RobarCartaMazo(): Unit
 }

@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent
 
+import java.util.Objects
+
 /** Una clase que representa un jugador (no humano) llamado Computadora.
  *
  * La Computadora se define por su nombre, su seccion del tablero, su contador de gemas, su mazo de cartas
@@ -10,21 +12,21 @@ package gwent
  * @param _ContadorGemas: Cantidad de gemas que tiene la computadora
  * @param _MazoCartas: Mazo de cartas que tiene la computadora
  * @param _ManoCartas: Cartas que tiene en la mano la computadora
- *
  * @constructor Crea una nueva Computadora con su nombre, seccion del tablero, contador de gemas, mazo de cartas y mano de cartas.
- *
  * @example
  * {{{
  * val Computadora = new Computadora("Computadora", "Cuerpo a cuerpo", 2, List[Carta](), List[Carta]())
  * val Computadora = Computadora.Nombre()
  * println(s"El nombre de la computadora es $Nombre")
  * }}}
- *
  * @author Antonio Vitalic
  */
 
 class Computadora (val _Nombre: String, var _SeccionTablero: String, var _ContadorGemas: Int = 2,
                    var _MazoCartas: List[Carta], var _ManoCartas: List[Carta]) extends Jugador with AccionesJugador{
+
+  override def hashCode: Int = Objects.hash(_Nombre, _SeccionTablero, _ContadorGemas, _MazoCartas, _ManoCartas)
+
 
   // Selecciona una carta de su mano y la coloca en el tablero para realizar una acción
   // override def JugarCartaMano(): Unit = {} por implementar
