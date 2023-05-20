@@ -29,18 +29,17 @@ import scala.util.Random.shuffle
 class Jugador (val _nombre: String, var _seccionTablero: String,
                var _contadorGemas: Int = 2,
                private var _mazoCartas: List[Carta],
-               private var _manoCartas: List[Carta])
-  extends AccionesJugador{
+               private var _manoCartas: List[Carta]) {
 
   override def hashCode: Int = Objects.hash(_nombre, _seccionTablero,
     _contadorGemas, _mazoCartas, _manoCartas)
 
 
   // Selecciona una carta de su mano y la coloca en el tablero para realizar una acción
-  // override def JugarCartaMano(): Unit = {} por implementar
+  // def JugarCartaMano(): Unit = {} por implementar
 
   // Roba o toma una carta del mazo y la agrega en su mano
-  override def robarCartaMazo(): Carta = {
+  def robarCartaMazo(): Carta = {
     val carta = _mazoCartas.head
     _mazoCartas = _mazoCartas.tail
     _manoCartas = carta :: _manoCartas
