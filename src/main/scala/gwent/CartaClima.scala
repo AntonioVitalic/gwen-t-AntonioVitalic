@@ -3,7 +3,7 @@ package gwent
 
 import java.util.Objects
 
-/** Una clase que representa una carta de clima.
+/** Clase que representa una carta de clima en el juego Gwen't.
  *
  * Una `CartaClima` es un tipo de [[Carta]] que se puede colocar en la zona de clima.
  * Estas cartas tienen la capacidad de afectar el campo de batalla y proporcionar ventajas o
@@ -14,7 +14,7 @@ import java.util.Objects
  * @param efecto: Efecto de la carta
  * @example
  * {{{
- * val CartaClima = new CartaClima("Escarcha mordiente")
+ * val CartaClima = new CartaClima("Carta", "Escarcha mordiente")
  * val efecto = CartaClima.efecto()
  * println(s"La carta de clima tiene el efecto $efecto")
  * }}}

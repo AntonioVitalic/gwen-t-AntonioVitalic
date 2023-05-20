@@ -4,21 +4,29 @@ package gwent
 
 /** Trait (interfaz) que representa las cartas.
  *
- * Representa las cartas del juego Gwent. Son utilizadas por Usuario y Computadora.
- * Dado que se programa en Scala 2, no lleva parámetros.
+ * Una carta se caracteriza por su [[nombre]] y [[efecto]].
+ * Esta interfaz sirve como una interfaz común para todos los tipos de cartas y asegura que cada carta,
+ * independientemente de su subtipo específico, tendrá estas propiedades básicas.
  *
- * Se declaran los parámetros que debe tener una carta, los cuales son:
- * Nombre: Nombre de la carta
- * SeccionTablero: Seccion del tablero en la que se encuentra la carta
- * Efecto: Efecto de la carta
+ * La palabra clave ``val`` en las declaraciones de propiedades indica que estas propiedades son
+ * inmutables: una vez que se ha creado una carta con un nombre y una descripción determinados, estas
+ * no puede ser cambiado.
+ * Esto refleja el comportamiento real de las cartas de juego, que tienen nombres fijos y
+ * efectos impresas en ellos.
  *
- * Este trait luego de hereda en la clase CartaUnidad y en la clase CartaEspecial, donde
- * se implementan los métodos usando override.
+ * El contenido real de estas propiedades, así como cualquier propiedad adicional o
+ * comportamientos, se definirán en las clases concretas que amplían esta interfaz.
  *
  * @author Antonio Vitalic
  */
 trait Carta{
+  /** El nombre de la carta.
+   * Es una propiedad inmutable.
+   */
   def nombre(): String
 
+  /** Una descripción del efecto de la carta.
+   * Es una propiedad inmutable.
+   */
   def efecto(): String
 }
