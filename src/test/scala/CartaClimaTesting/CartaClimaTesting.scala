@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package CartaClimaTesting
 
-import gwent.{Carta, CartaClima, CartaUnidad, Computadora, Usuario}
+import gwent.{Carta, CartaClima}
 
 
 /** Una clase para testear la clase CartaClima.
@@ -29,7 +29,7 @@ class CartaClimaTesting extends munit.FunSuite {
   var CartaClimaLluvia: CartaClima = _ // CartaClima con SeccionTablero = "Clima" y Efecto = "Lluvia torrencial"
   var CartaClimaDespejado: CartaClima = _  // CartaClima con SeccionTablero = "Clima" y Efecto = "Clima despejado"
 
-  var UsuarioEquals: Usuario = _
+  var UsuarioEquals: Jugador = _
   var ComputadoraEquals: Computadora = _
   var CartaUnidadEquals: CartaUnidad = _
   var CartaClimaEquals: CartaClima = _
@@ -44,7 +44,7 @@ class CartaClimaTesting extends munit.FunSuite {
     CartaClimaLluvia = new CartaClima(Nombre = "Carta Lluvia",  SeccionTablero = "Clima", Efecto = "Lluvia torrencial")
     CartaClimaDespejado = new CartaClima(Nombre = "Carta Despejado",  SeccionTablero = "Clima", Efecto = "Clima despejado")
 
-    UsuarioEquals = new Usuario(_Nombre = "Usuario", _SeccionTablero = "Cuerpo a cuerpo", _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
+    UsuarioEquals = new Jugador(_Nombre = "Usuario", _SeccionTablero = "Cuerpo a cuerpo", _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
 
     ComputadoraEquals = new Computadora(_Nombre = "Computadora", _SeccionTablero = "Cuerpo a cuerpo",
       _ContadorGemas = 2, _MazoCartas = List[Carta](), _ManoCartas = List[Carta]())
