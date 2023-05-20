@@ -26,5 +26,5 @@ trait AccionesJugador {
    *
    * @return Unit
    */
-  def RobarCartaMazo(): Unit
+  def robarCartaMazo(): Carta
 }

@@ -5,23 +5,23 @@ import java.util.Objects
 
 /** Una clase que representa una carta de clima.
  *
- * La carta de clima se define por su efecto.
+ * Una `CartaClima` es un tipo de [[Carta]] que se puede colocar en la zona de clima.
+ * Estas cartas tienen la capacidad de afectar el campo de batalla y proporcionar ventajas o
+ * desventajas para los jugadores, según el tipo de clima que se haya elegido.
  *
- * @param Efecto: Efecto de la carta
  * @constructor Crea una nueva CartaClima con su efecto.
+ * @param nombre: Nombre de la carta
+ * @param efecto: Efecto de la carta
  * @example
  * {{{
  * val CartaClima = new CartaClima("Escarcha mordiente")
- * val Efecto = CartaClima.Efecto()
- * println(s"La carta de clima tiene el efecto $Efecto")
+ * val efecto = CartaClima.efecto()
+ * println(s"La carta de clima tiene el efecto $efecto")
  * }}}
  * @author Antonio Vitalic
  */
 
-class CartaClima (val Nombre: String, val SeccionTablero: String, val Efecto: String) extends Carta{
+class CartaClima (val nombre: String, val efecto: String) extends Carta{
   // Efecto puede ser "Escarcha mordiente", "Niebla impenetrable", "Lluvia torrencial" o "Clima despejado"
-  // SeccionTablero sólo es "Clima"
-  override def hashCode: Int = Objects.hash(Nombre, SeccionTablero, Efecto)
-
-
+  override def hashCode: Int = Objects.hash(nombre, efecto)
 }

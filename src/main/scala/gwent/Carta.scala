@@ -18,9 +18,7 @@ package gwent
  * @author Antonio Vitalic
  */
 trait Carta{
-  def Nombre(): String
+  def nombre(): String
 
-  def SeccionTablero(): String
-
-  def Efecto(): String
+  def efecto(): String
 }
