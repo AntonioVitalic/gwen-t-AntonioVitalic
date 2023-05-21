@@ -22,4 +22,8 @@ package gwent
 class CartaUnidadCuerpo(nombre: String, efecto: String, fuerza: Int)
   extends AbstractCartaUnidad (nombre, efecto, fuerza) {
 
+  override def jugarCarta(jugador: Jugador): Unit = {
+    jugador._seccionTablero.jugarCartaCuerpo(this)
+  }
+
 }

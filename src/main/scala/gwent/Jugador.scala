@@ -28,7 +28,7 @@ import scala.util.Random.shuffle
  * @author Antonio Vitalic
  */
 
-class Jugador (val _nombre: String, var _seccionTablero: String,
+class Jugador (val _nombre: String, var _seccionTablero: Tablero,
                var _contadorGemas: Int = 2,
                private var _mazoCartas: List[Carta],
                private var _manoCartas: List[Carta]) {
@@ -57,16 +57,13 @@ class Jugador (val _nombre: String, var _seccionTablero: String,
 
   def Nombre(): String = _nombre // getter para el nombre
 
-  def SeccionTablero(): String = _seccionTablero // getter para la seccion del tablero
+  def SeccionTablero(): Tablero = _seccionTablero // getter para la seccion del tablero
 
   def ContadorGemas(): Int = _contadorGemas  // getter para el contador de gemas
 
   def MazoCartas(): List[Carta] = _mazoCartas // getter para el mazo de cartas
 
   def ManoCartas(): List[Carta] = _manoCartas // getter para la mano de cartas
-
-
-  def SeccionTablero_=(SeccionTablero: String): Unit = _seccionTablero = SeccionTablero // setter para la seccion del tablero
 
   def ContadorGemas_=(ContadorGemas: Int): Unit = _contadorGemas = ContadorGemas // setter para el contador de gemas
 
