@@ -6,7 +6,8 @@ import scala.util.Random.shuffle
 
 /** Una clase que representa un jugador genérico (un humano o una "computadora") .
  *
- * El Jugador se define por su nombre, su seccion del tablero, su contador de gemas, su mazo de cartas
+ * El Jugador se define por su nombre, su sección del tablero, su contador de gemas, su mazo de cartas
+ * y su mano de cartas
  *
  * @param _nombre: Nombre del Jugador
  * @param _seccionTablero: Seccion del tablero en la que se encuentra el Jugador
@@ -14,7 +15,8 @@ import scala.util.Random.shuffle
  * @param _mazoCartas: Mazo de cartas que tiene el Jugador
  * @param _manoCartas: Cartas que tiene en la mano el Jugador
  *
- * @constructor Crea un nuevo Jugador con su nombre, seccion del tablero, contador de gemas, mazo de cartas y mano de cartas.
+ * @constructor Crea un nuevo Jugador con su nombre, seccion del tablero, contador de gemas, mazo de cartas
+ *              y mano de cartas.
  *
  * @example
  * {{{
@@ -34,10 +36,6 @@ class Jugador (val _nombre: String, var _seccionTablero: String,
   override def hashCode: Int = Objects.hash(_nombre, _seccionTablero,
     _contadorGemas, _mazoCartas, _manoCartas)
 
-
-  // Selecciona una carta de su mano y la coloca en el tablero para realizar una acción
-  // def JugarCartaMano(): Unit = {} por implementar
-
   // Roba o toma una carta del mazo y la agrega en su mano
   def robarCartaMazo(): Carta = {
     val carta = _mazoCartas.head
@@ -49,6 +47,13 @@ class Jugador (val _nombre: String, var _seccionTablero: String,
   def barajaMazoCartas(): Unit = {
     _mazoCartas = shuffle(_mazoCartas)
   }
+
+  def jugarCartaMano(): Unit = {
+    val carta = _manoCartas.head
+    _manoCartas = _manoCartas.tail
+    carta.jugarCarta(this)
+  }
+
 
   def Nombre(): String = _nombre // getter para el nombre
 

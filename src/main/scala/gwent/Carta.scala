@@ -29,4 +29,6 @@ trait Carta{
    * Es una propiedad inmutable.
    */
   def efecto(): String
+
+  def jugarCarta(jugador : Jugador) : Unit
 }
