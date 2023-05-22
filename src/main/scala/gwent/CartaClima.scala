@@ -25,7 +25,7 @@ class CartaClima (val nombre: String, val efecto: String) extends Carta{
   // Efecto puede ser "Escarcha mordiente", "Niebla impenetrable", "Lluvia torrencial" o "Clima despejado"
   override def hashCode: Int = Objects.hash(nombre, efecto)
 
-  override def jugarCarta(jugador: Jugador): Unit = {
-    jugador._seccionTablero.jugarCartaClima(this)
+  override def jugarCarta(tablero : AbstractTablero): Unit = {
+    tablero.jugarCartaClima(this)
   }
 }

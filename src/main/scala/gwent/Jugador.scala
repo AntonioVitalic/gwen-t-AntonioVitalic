@@ -28,13 +28,18 @@ import scala.util.Random.shuffle
  * @author Antonio Vitalic
  */
 
-class Jugador (val _nombre: String, var _seccionTablero: Tablero,
+class Jugador (val _nombre: String, var _seccionTablero: AbstractTablero,
                var _contadorGemas: Int = 2,
                private var _mazoCartas: List[Carta],
                private var _manoCartas: List[Carta]) {
 
   override def hashCode: Int = Objects.hash(_nombre, _seccionTablero,
     _contadorGemas, _mazoCartas, _manoCartas)
+
+  def assertContadorGemas(valor: Int): Unit = {
+    assert(valor >= 0, "Contador de gemas no puede ser negativo")
+    _contadorGemas = valor
+  }
 
   // Roba o toma una carta del mazo y la agrega en su mano
   def robarCartaMazo(): Carta = {
@@ -48,16 +53,15 @@ class Jugador (val _nombre: String, var _seccionTablero: Tablero,
     _mazoCartas = shuffle(_mazoCartas)
   }
 
-  def jugarCartaMano(): Unit = {
+  def jugarCartaMano(carta : Carta): Unit = {
     val carta = _manoCartas.head
     _manoCartas = _manoCartas.tail
-    carta.jugarCarta(this)
+    carta.jugar(_seccionTablero)
   }
-
 
   def Nombre(): String = _nombre // getter para el nombre
 
-  def SeccionTablero(): Tablero = _seccionTablero // getter para la seccion del tablero
+  def SeccionTablero(): AbstractTablero = _seccionTablero // getter para la seccion del tablero
 
   def ContadorGemas(): Int = _contadorGemas  // getter para el contador de gemas
 

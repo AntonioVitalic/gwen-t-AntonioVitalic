@@ -34,5 +34,5 @@ trait Carta{
    * Implementa la acción de jugar una carta, considerando el jugador dueño de esta
    * @param jugador
    */
-  def jugarCarta(jugador : Jugador) : Unit
+  def jugar(tablero : AbstractTablero) : Unit
 }

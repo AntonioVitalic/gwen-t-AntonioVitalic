@@ -16,7 +16,7 @@ package gwent
  * @author Antonio Vitalic
  */
 abstract class AbstractCartaUnidad protected(val nombre: String, val efecto: String,
-                                             val fuerza: Int) extends Carta {
+                                             var fuerza: Int) extends Carta {
 
   /** La fuerza actual de la carta, que puede verse afectada por diversas condiciones durante
    * el desarrollo del juego.

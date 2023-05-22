@@ -24,8 +24,8 @@ package gwent
 class CartaUnidadDistancia (nombre: String, efecto: String, fuerza: Int)
   extends AbstractCartaUnidad (nombre, efecto, fuerza) {
 
-  override def jugarCarta(jugador: Jugador): Unit = {
-    jugador._seccionTablero.jugarCartaDistancia(this)
+  override def jugarCarta(tablero: AbstractTablero): Unit = {
+    tablero.jugarCartaDistancia(this)
   }
 
 }
