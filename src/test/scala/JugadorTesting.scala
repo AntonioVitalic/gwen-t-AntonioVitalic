@@ -118,16 +118,6 @@ class JugadorTesting extends munit.FunSuite {
     assertEquals(JugadorClima.MazoCartas(), List[Carta]())
   }
 
-
-  //test("Luego de robar una carta, la cantidad de cartas de un Jugador(_ManoCartas, siendo un List[Carta]) debe aumentar en 1, y la cantidad de cartas del mazo (_MazoCartas, siendo un List[Carta]) debe disminuir en 1") {
-  //  JugadorDistancia.ManoCartas() = List(Carta1, Carta2)
-  //  JugadorDistancia.MazoCartas() = List(Carta3, Carta4)
-  //  JugadorDistancia.robarCartaMazo()
-  //
-  //  assertEquals(JugadorDistancia.ManoCartas().length, 3)
-  //  assertEquals(JugadorDistancia.MazoCartas().length, 1)
-  //}
-
   test("Un Jugador no es una CartaUnidadAsedio") {
     assert(!JugadorEquals.equals(CartaUnidadAsedioEquals))
   }

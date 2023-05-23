@@ -44,7 +44,6 @@ class CartaUnidadAsedioTesting extends munit.FunSuite {
   var carta1 = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Escarcha mordiente", fuerza = 10)
   var carta2 = new CartaUnidadAsedio(nombre = "Carta2", efecto = "Niebla impenetrable", fuerza = 5)
 
-  // SeccionTablero no hay que testearlo en la entrega 1
   override def beforeEach(context: BeforeEach): Unit = {
     CartaUnidadAsedio1 = new CartaUnidadAsedio(nombre = "Mismo nombre", efecto = "Mismo efecto", fuerza = 10)
     CartaUnidadAsedio2 = new CartaUnidadAsedio(nombre = "Mismo nombre", efecto = "Mismo efecto", fuerza = 10)

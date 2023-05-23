@@ -32,21 +32,14 @@ class Jugador (val _nombre: String, var _seccionTablero: AbstractTablero,
                var _contadorGemas: Int = 2,
                var _mazoCartas: List[Carta],
                var _manoCartas: List[Carta]) {
+  assert(_contadorGemas >= 0, "La cantidad de gemas debe ser mayor o igual a 0")
+
   /**
    * Metodo que permite comparar dos objetos de tipo Jugador.
    * @return
    */
   override def hashCode: Int = Objects.hash(_nombre, _seccionTablero,
     _contadorGemas, _mazoCartas, _manoCartas)
-
-  /**
-   * Método que permite asegurar un valor no negativo para el contador de gemas.
-   * @param cantidad : Cantidad de gemas.
-   */
-  def assertContadorGemas(cantidad: Int): Unit = {
-    assert(cantidad >= 0, "Contador de gemas no puede ser negativo")
-    _contadorGemas = cantidad
-  }
 
   // Roba o toma una carta del mazo y la agrega en su mano
   //def robarCartaMazo(): Carta = { // solucion T1 ucursos
