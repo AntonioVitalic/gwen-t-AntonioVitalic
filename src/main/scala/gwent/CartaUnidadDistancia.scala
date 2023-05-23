@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent
 
+import java.util.Objects
+
 /** Clase que representa una carta de unidad de combate a distancia en el juego Gwen't.
  *
  * Una `CartaUnidadDistancia` es un tipo de [[AbstractCartaUnidad]].
@@ -23,9 +25,20 @@ package gwent
  */
 class CartaUnidadDistancia (nombre: String, efecto: String, fuerza: Int)
   extends AbstractCartaUnidad (nombre, efecto, fuerza) {
+  // Efecto puede ser "Refuerzo moral" o "Vínculo estrecho"
 
-  override def jugarCarta(tablero: AbstractTablero): Unit = {
-    tablero.jugarCartaDistancia(this)
+  /**
+   * Método que permite comparar dos objetos de tipo CartaUnidadDistancia.
+   * @return
+   */
+  override def hashCode: Int = Objects.hash(nombre, efecto, fuerza)
+
+  /**
+   * Método que permite añadir una carta de distancia al tablero de distancia.
+   * @param tablero
+   */
+  def anadirCartaDistancia(tablero: AbstractTablero): Unit = {
+    tablero.anadirCarta(this)
   }
 
 }

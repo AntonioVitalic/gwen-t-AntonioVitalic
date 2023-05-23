@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent
 
+import java.util.Objects
+
 /** Clase que representa una carta de unidad de combate cuerpo a cuerpo en el juego Gwen't.
  *
  * Una `CartaUnidadCuerpo` es un tipo de [[AbstractCartaUnidad]].
@@ -21,9 +23,18 @@ package gwent
  */
 class CartaUnidadCuerpo(nombre: String, efecto: String, fuerza: Int)
   extends AbstractCartaUnidad (nombre, efecto, fuerza) {
+  /**
+   * Metodo que permite comparar dos objetos de tipo CartaUnidadCuerpo.
+   * @return
+   */
+  override def hashCode: Int = Objects.hash(nombre, efecto, fuerza)
 
-  override def jugarCarta(tablero: AbstractTablero): Unit = {
-    tablero.jugarCartaCuerpo(this)
+  /**
+   * Metodo que permite añadir una carta de cuerpo a cuerpo al tablero de cuerpo a cuerpo.
+   * @param tablero
+   */
+  def anadirCartaCuerpo(tablero: AbstractTablero): Unit = {
+    tablero.anadirCarta(this)
   }
 
 }

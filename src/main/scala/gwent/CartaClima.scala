@@ -23,9 +23,19 @@ import java.util.Objects
 
 class CartaClima (val nombre: String, val efecto: String) extends Carta{
   // Efecto puede ser "Escarcha mordiente", "Niebla impenetrable", "Lluvia torrencial" o "Clima despejado"
+
+  /**
+   * Método que permite comparar dos objetos de tipo CartaClima.
+   * @return
+   */
   override def hashCode: Int = Objects.hash(nombre, efecto)
 
-  override def jugarCarta(tablero : AbstractTablero): Unit = {
-    tablero.jugarCartaClima(this)
+  /**
+   * Método que permite añadir una carta de clima al tablero de clima.
+   * @param tablero
+   */
+  def anadirCartaClima(tablero: AbstractTablero): Unit = {
+    tablero.anadirCarta(this)
   }
+
 }

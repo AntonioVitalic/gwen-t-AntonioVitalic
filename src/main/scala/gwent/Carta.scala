@@ -31,8 +31,38 @@ trait Carta{
   def efecto(): String
 
   /**
-   * Implementa la acción de jugar una carta, considerando el jugador dueño de esta
-   * @param jugador
+   * Implementa la acción de añadir una carta de unidad de asedio en una
+   * zona de combate de asedio.
+   * @param tableroAsedio
    */
-  def jugar(tablero : AbstractTablero) : Unit
+  def anadirCartaAsedio(tableroAsedio : TableroAsedio) : Unit = {
+    tableroAsedio.anadirCarta(this)
+  }
+
+  /**
+   * Implementa la acción de añadir una carta de unidad de cuerpo a cuerpo en una
+   * zona de combate cuerpo a cuerpo.
+   * @param tableroCuerpo
+   */
+  def anadirCartaCuerpo(tableroCuerpo : TableroCuerpo) : Unit = {
+    tableroCuerpo.anadirCarta(this)
+  }
+
+  /**
+   * Implementa la acción de añadir una carta de unidad a distancia en una
+   * zona de combate a distancia.
+   * @param tableroDistancia
+   */
+  def anadirCartaDistancia(tableroDistancia : TableroDistancia) : Unit = {
+    tableroDistancia.anadirCarta(this)
+  }
+
+  /**
+   * Implementa la acción de añadir una carta de clima en una
+   * zona de clima.
+   * @param tableroClima
+   */
+  def anadirCartaClima(tableroClima : TableroClima) : Unit = {
+    tableroClima.anadirCarta(this)
+  }
 }

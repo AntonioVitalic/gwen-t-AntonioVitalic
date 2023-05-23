@@ -30,45 +30,98 @@ import scala.util.Random.shuffle
 
 class Jugador (val _nombre: String, var _seccionTablero: AbstractTablero,
                var _contadorGemas: Int = 2,
-               private var _mazoCartas: List[Carta],
-               private var _manoCartas: List[Carta]) {
-
+               var _mazoCartas: List[Carta],
+               var _manoCartas: List[Carta]) {
+  /**
+   * Metodo que permite comparar dos objetos de tipo Jugador.
+   * @return
+   */
   override def hashCode: Int = Objects.hash(_nombre, _seccionTablero,
     _contadorGemas, _mazoCartas, _manoCartas)
 
-  def assertContadorGemas(valor: Int): Unit = {
-    assert(valor >= 0, "Contador de gemas no puede ser negativo")
-    _contadorGemas = valor
+  /**
+   * Método que permite asegurar un valor no negativo para el contador de gemas.
+   * @param cantidad : Cantidad de gemas.
+   */
+  def assertContadorGemas(cantidad: Int): Unit = {
+    assert(cantidad >= 0, "Contador de gemas no puede ser negativo")
+    _contadorGemas = cantidad
   }
 
   // Roba o toma una carta del mazo y la agrega en su mano
-  def robarCartaMazo(): Carta = {
-    val carta = _mazoCartas.head
-    _mazoCartas = _mazoCartas.tail
-    _manoCartas = carta :: _manoCartas
-    carta
+  //def robarCartaMazo(): Carta = { // solucion T1 ucursos
+  //  val carta = _mazoCartas.head
+  //  _mazoCartas = _mazoCartas.tail
+  //  _manoCartas = carta :: _manoCartas
+  //  carta
+  //}
+
+  /**
+   * Método que permite al jugador robar una carta del mazo y agregarla a la mano.
+   */
+  def robarCartaMazo(): Unit = {
+    if (MazoCartas().isEmpty) {
+      _manoCartas = _manoCartas // no hace nada si el mazo esta vacio
+      _mazoCartas = _mazoCartas // no hace nada si el mazo esta vacio
+    }
+    else {
+      println("Robando carta del mazo")
+      _manoCartas = _manoCartas.::(_mazoCartas.head) // agrega la primera carta del mazo a la mano
+      _mazoCartas = _mazoCartas.tail // elimina la primera carta del mazo
+    }
   }
 
+  /**
+   * Método que permite al jugador barajar su mazo de cartas.
+   */
   def barajaMazoCartas(): Unit = {
     _mazoCartas = shuffle(_mazoCartas)
   }
 
+  /**
+   * Método que permite al jugador jugar una carta de su mano,
+   * considerando el tablero en que jugará.
+   * @param carta : Carta que se jugará.
+   */
   def jugarCartaMano(carta : Carta): Unit = {
     val carta = _manoCartas.head
     _manoCartas = _manoCartas.tail
-    carta.jugar(_seccionTablero)
+    _seccionTablero.anadirCarta(carta)
   }
 
-  def Nombre(): String = _nombre // getter para el nombre
+  /**
+   * Método getter para el nombre del jugador.
+   * @return Nombre del jugador.
+   */
+  def Nombre(): String = _nombre
 
+  /**
+   * Método getter para la sección del tablero.
+   * @return Sección del tablero.
+   */
   def SeccionTablero(): AbstractTablero = _seccionTablero // getter para la seccion del tablero
 
-  def ContadorGemas(): Int = _contadorGemas  // getter para el contador de gemas
+  /**
+   * Método getter para el contador de gemas.
+   * @return Contador de gemas.
+   */
+  def ContadorGemas(): Int = _contadorGemas
 
-  def MazoCartas(): List[Carta] = _mazoCartas // getter para el mazo de cartas
+  /**
+   * Método getter para el mazo de cartas.
+   * @return Mazo de cartas.
+   */
+  def MazoCartas(): List[Carta] = _mazoCartas
 
-  def ManoCartas(): List[Carta] = _manoCartas // getter para la mano de cartas
+  /**
+   * Método getter para la mano de cartas.
+   * @return Mano de cartas.
+   */
+  def ManoCartas(): List[Carta] = _manoCartas
 
-  def ContadorGemas_=(ContadorGemas: Int): Unit = _contadorGemas = ContadorGemas // setter para el contador de gemas
-
+  /**
+   *  Método setter para la sección del tablero.
+   * @param ContadorGemas : Contador de gemas.
+   */
+  def ContadorGemas_=(ContadorGemas: Int): Unit = _contadorGemas = ContadorGemas
 }

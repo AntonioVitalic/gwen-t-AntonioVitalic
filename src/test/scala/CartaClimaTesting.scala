@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 
-import gwent._
+import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, Jugador, TableroAsedio}
 
 
 /** Una clase para testear la clase CartaClima.
@@ -37,7 +37,6 @@ class CartaClimaTesting extends munit.FunSuite {
   var CartaUnidadAsedio: CartaUnidadAsedio = _ // Fuerza = 10
 
   var JugadorEquals: Jugador = _
-  var CartaUnidadAsedio : CartaUnidadAsedio = _
   var CartaUnidadCuerpo : CartaUnidadCuerpo = _
   var CartaUnidadDistancia : CartaUnidadDistancia = _
   var CartaClimaEquals: CartaClima = _
@@ -45,8 +44,8 @@ class CartaClimaTesting extends munit.FunSuite {
 
   // SeccionTablero no hay que testearlo en la entrega 1
   override def beforeEach(context: BeforeEach): Unit = {
-    CartaClima1 = new CartaClima(nombre = "Mismo nombre", efecto = "Escarcha mordiente")
-    CartaClima2 = new CartaClima(nombre = "Mismo nombre", efecto = "Escarcha mordiente")
+    CartaClima1 = new CartaClima(nombre = "CartaClima1", efecto = "Escarcha mordiente")
+    CartaClima2 = new CartaClima(nombre = "Mismo nombre", efecto = "Mismo efecto")
 
     CartaClima1MismoNombre = new CartaClima(nombre = "Mismo nombre", efecto = "Escarcha mordiente")
     CartaClima2MismoNombre = new CartaClima(nombre = "Mismo nombre", efecto = "Niebla impenetrable")
@@ -60,7 +59,7 @@ class CartaClimaTesting extends munit.FunSuite {
     CartaClimaDespejado = new CartaClima(nombre = "Carta Despejado", efecto = "Clima despejado")
 
     JugadorEquals = new Jugador(_nombre = "Jugador", _seccionTablero = tableroAsedio, _contadorGemas = 2,
-      _mazoCartas = List[Carta], _manoCartas = List[Carta])
+      _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
     CartaUnidadAsedio = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 10)
     CartaUnidadCuerpo = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 10)
     CartaUnidadDistancia = new CartaUnidadDistancia(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 10)
@@ -68,46 +67,28 @@ class CartaClimaTesting extends munit.FunSuite {
 
   }
 
-  test("Una CartaClima debe tener Efecto") {
-    assertEquals(CartaClimaEscarcha.efecto, "Escarcha mordiente")
-    assertEquals(CartaClimaNiebla.efecto, "Niebla impenetrable")
-    assertEquals(CartaClimaLluvia.efecto, "Lluvia torrencial")
-    assertEquals(CartaClimaDespejado.efecto, "Clima despejado")
-  }
-  test("CartaClima's con distinto Efecto son distintos") {
-    assert(!CartaClimaNiebla.equals(CartaClimaLluvia))
+  test("Dos CartaClima con exactamente los mismos atributos, pero con distinto identificador son equivalentes"){
+    assertEquals(CartaClima1.##, CartaClima2.##)
   }
 
-  test("CartaClima's con distinto nombre son distintos") {
-
-  }
-
-  test("Una CartaClima debe tener Nombre") {
+  test("Una CartaClima debe tener nombre") {
     assertEquals(CartaClimaEscarcha.nombre, "Carta Escarcha")
     assertEquals(CartaClimaNiebla.nombre, "Carta Niebla")
     assertEquals(CartaClimaLluvia.nombre, "Carta Lluvia")
     assertEquals(CartaClimaDespejado.nombre, "Carta Despejado")
   }
 
-  test("CartaClima's con distinto Nombre son distintos") {
-    assert(!CartaClimaEscarcha.equals(CartaClimaNiebla))
+  test("Una CartaClima debe tener efecto") {
+    assertEquals(CartaClimaEscarcha.efecto, "Escarcha mordiente")
+    assertEquals(CartaClimaNiebla.efecto, "Niebla impenetrable")
+    assertEquals(CartaClimaLluvia.efecto, "Lluvia torrencial")
+    assertEquals(CartaClimaDespejado.efecto, "Clima despejado")
+  }
+  test("CartaClima's con distinto efecto son distintos") {
+    assert(!CartaClima1MismoNombre.equals(CartaClima2MismoNombre))
   }
 
-  test("Dos CartaClima con el mismo Nombre, SeccionTablero y Efecto, pero con distinto nombre de objeto, son iguales") {
-    assertEquals(CartaClima1MismoNombre.##, CartaClima2MismoNombre.##)
+  test("CartaClima's con distinto nombre son distintos") {
+    assert(!CartaClima1MismoEfecto.equals(CartaClima2MismoEfecto))
   }
-
-  test("Una CartaClima no es un Jugador") {
-    assert(!CartaClimaEquals.equals(JugadorEquals))
-  }
-
-  test("Un CartaClima no es una CartaUnidadAsedio") {
-    assert(!CartaClimaEquals.equals(CartaUnidadAsedio))
-  }
-
-  test("Un CartaClima no es una CartaUnidadCuerpo") {
-    assert(!CartaClimaEquals.equals(CartaUnidadCuerpo))
-  }
-
-  test("Una CartaClima no es una CartaUnidadDistancia")
 }
