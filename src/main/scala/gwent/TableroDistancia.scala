@@ -19,12 +19,4 @@ class TableroDistancia(private var conjuntoCartas: List[CartaUnidadDistancia]) e
   override def anadirCarta(carta: Carta): Unit = {
     carta.anadirCartaDistancia(this)
   }
-
-  /**
-   * Método específico que permite agregar una carta de tipo [[CartaUnidadDistancia]] al tablero de distancia.
-   * @param cartaDistancia : Carta de tipo [[CartaUnidadDistancia]] que se desea agregar al tablero de distancia.
-   */
-  def anadirCartaDistancia(cartaDistancia: CartaUnidadDistancia): Unit = {
-    conjuntoCartas = cartaDistancia :: conjuntoCartas
-  }
 }

@@ -19,12 +19,4 @@ class TableroAsedio(private var conjuntoCartas: List[CartaUnidadAsedio]) extends
   override def anadirCarta(carta : Carta): Unit = {
     carta.anadirCartaAsedio(this)
   }
-
-  /**
-   * Método específico que permite agregar una carta de tipo [[CartaUnidadAsedio]] al tablero de asedio.
-   * @param cartaAsedio : Carta de tipo [[CartaUnidadAsedio]] que se desea agregar al tablero de asedio.
-   */
-  def anadirCartaAsedio(cartaAsedio: CartaUnidadAsedio): Unit = {
-    conjuntoCartas = cartaAsedio :: conjuntoCartas
-  }
 }

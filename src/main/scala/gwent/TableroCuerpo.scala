@@ -19,11 +19,4 @@ class TableroCuerpo(private var conjuntoCartas: List[CartaUnidadCuerpo]) extends
   override def anadirCarta(carta: Carta): Unit = {
     carta.anadirCartaCuerpo(this)
   }
-  /**
-   * Método específico que permite agregar una carta de tipo [[CartaUnidadCuerpo]] al tablero de cuerpo.
-   * @param cartaCuerpo : Carta de tipo [[CartaUnidadCuerpo]] que se desea agregar al tablero de cuerpo.
-   */
-  def anadirCartaCuerpo(cartaCuerpo: CartaUnidadCuerpo): Unit = {
-    conjuntoCartas = cartaCuerpo :: conjuntoCartas
-  }
 }

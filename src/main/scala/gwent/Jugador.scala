@@ -79,7 +79,7 @@ class Jugador (val _nombre: String, var _seccionTablero: AbstractTablero,
   def jugarCartaMano(carta : Carta): Unit = {
     val carta = _manoCartas.head
     _manoCartas = _manoCartas.tail
-    _seccionTablero.anadirCarta(carta)
+    _seccionTablero.jugar(carta)
   }
 
   /**

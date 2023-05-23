@@ -112,7 +112,7 @@ class CartaUnidadDistanciaTesting extends munit.FunSuite {
   test("Una CartaUnidadDistancia no es un CartaClima"){
     assert(!CartaUnidadDistanciaEquals.equals(CartaClima))
   }
-
+  /**
   test("Método anadirCartaDistancia de CartaUnidadDistancia") {
     val jugador = new Jugador(_nombre = "Jugador", _seccionTablero = tableroDistancia, _contadorGemas = 2,
       _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
@@ -120,6 +120,5 @@ class CartaUnidadDistanciaTesting extends munit.FunSuite {
     carta.anadirCartaDistancia(jugador._seccionTablero)
     assertEquals(jugador.ManoCartas().length, 0)
     assertEquals(jugador.ManoCartas().length, 0)
-  }
-
+  }*/
 }

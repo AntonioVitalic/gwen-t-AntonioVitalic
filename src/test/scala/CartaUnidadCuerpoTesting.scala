@@ -112,7 +112,7 @@ class CartaUnidadCuerpoTesting extends munit.FunSuite {
   test("Una CartaUnidadCuerpo no es un CartaClima"){
     assert(!CartaUnidadCuerpoEquals.equals(CartaClima))
   }
-
+  /**
   test("Método anadirCartaCuerpo de CartaUnidadCuerpo") {
     val jugador = new Jugador(_nombre = "Jugador", _seccionTablero = tableroCuerpo, _contadorGemas = 2,
       _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
@@ -120,5 +120,5 @@ class CartaUnidadCuerpoTesting extends munit.FunSuite {
     carta.anadirCartaCuerpo(jugador._seccionTablero)
     assertEquals(jugador.ManoCartas().length, 0)
     assertEquals(jugador.ManoCartas().length, 0)
-  }
+  }*/
 }

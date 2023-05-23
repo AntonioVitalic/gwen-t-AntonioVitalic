@@ -36,6 +36,7 @@ class CartaClima (val nombre: String, val efecto: String) extends Carta{
    */
   def anadirCartaClima(tablero: AbstractTablero): Unit = {
     tablero.anadirCarta(this)
+    println("Se añadió una Carta de clima a la zona de clima.")
   }
 
 }

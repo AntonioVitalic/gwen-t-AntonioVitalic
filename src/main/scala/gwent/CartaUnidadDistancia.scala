@@ -29,16 +29,18 @@ class CartaUnidadDistancia (nombre: String, efecto: String, fuerza: Int)
 
   /**
    * Método que permite comparar dos objetos de tipo CartaUnidadDistancia.
+   *
    * @return
    */
   override def hashCode: Int = Objects.hash(nombre, efecto, fuerza)
 
   /**
    * Método que permite añadir una carta de distancia al tablero de distancia.
+   *
    * @param tablero
    */
   def anadirCartaDistancia(tablero: AbstractTablero): Unit = {
     tablero.anadirCarta(this)
+    println("Se añadió una Carta de tipo unidad de combate a distancia a la zona de combate a distancia.")
   }
-
 }

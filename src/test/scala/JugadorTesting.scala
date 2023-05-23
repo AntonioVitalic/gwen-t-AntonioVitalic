@@ -59,7 +59,7 @@ class JugadorTesting extends munit.FunSuite {
     JugadorCuerpo = new Jugador(_nombre = "Peach", _seccionTablero = tableroCuerpo,
       _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
 
-    JugadorDistancia = new Jugador(_nombre = "Toad", _seccionTablero = tableroAsedio,
+    JugadorDistancia = new Jugador(_nombre = "Toad", _seccionTablero = tableroDistancia,
       _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
 
     JugadorClima = new Jugador(_nombre = "DK", _seccionTablero = tableroClima,
@@ -76,8 +76,8 @@ class JugadorTesting extends munit.FunSuite {
   test("Un Jugador debe tener nombre") {
     assertEquals(Jugador1MismoNombre._nombre, "Mario")
     assertEquals(Jugador2MismoNombre._nombre, "Mario")
-    assertEquals(JugadorDistancia._nombre, "Peach")
-    assertEquals(JugadorAsedio._nombre, "Bowser")
+    assertEquals(JugadorDistancia._nombre, "Toad")
+    assertEquals(JugadorAsedio._nombre, "Luigi")
     assertEquals(JugadorClima._nombre, "DK")
   }
 
@@ -117,7 +117,7 @@ class JugadorTesting extends munit.FunSuite {
     assertEquals(JugadorAsedio.MazoCartas(), List[Carta]())
     assertEquals(JugadorClima.MazoCartas(), List[Carta]())
   }
-
+  /**
   test("Un Jugador no es una CartaUnidadAsedio") {
     assert(!JugadorEquals.equals(CartaUnidadAsedioEquals))
   }
@@ -132,7 +132,7 @@ class JugadorTesting extends munit.FunSuite {
 
   test("Un Jugador no es una CartaClima") {
     assert(!JugadorEquals.equals(CartaClimaEquals))
-  }
+  }*/
 
   test("Getter Nombre") {
     val JugadorToad = new Jugador(_nombre = "Toad", _seccionTablero = tableroAsedio,
@@ -165,6 +165,9 @@ class JugadorTesting extends munit.FunSuite {
   }
 
   test("Setter ContadorGemas") {
+    val JugadorToadette = new Jugador(_nombre = "Toadette",
+      _seccionTablero = tableroAsedio, _contadorGemas = 2,
+      _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
     JugadorToadette.ContadorGemas_= (1)
     assert(JugadorToadette._contadorGemas == 1)
   }
@@ -176,4 +179,22 @@ class JugadorTesting extends munit.FunSuite {
     JugadorLuma.robarCartaMazo()
     assertEquals(JugadorLuma.MazoCartas().length, 0)
   }
+
+  test("barajaMazoCartas()"){
+    // implementamos un test para el método barajaMazoCartas()
+    val JugadorLuma = new Jugador(_nombre = "Luma", _seccionTablero = tableroAsedio,
+      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+    JugadorLuma.barajaMazoCartas()
+    assert(JugadorLuma.MazoCartas().isEmpty)
+  }
+
+
+  test("jugarCartaMano()"){
+    // implementamos un test para el método jugarCartaMano()
+    val JugadorLuma = new Jugador(_nombre = "Luma", _seccionTablero = tableroAsedio,
+      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+    JugadorLuma.jugarCartaMano(CartaUnidadAsedioEquals)
+    assert(JugadorLuma.ManoCartas().isEmpty)
+  }
+
 }

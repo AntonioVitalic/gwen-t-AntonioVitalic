@@ -19,12 +19,4 @@ class TableroClima(private var conjuntoCartas: List[CartaClima]) extends Abstrac
   override def anadirCarta(carta: Carta): Unit = {
     carta.anadirCartaClima(this)
   }
-
-  /**
-   * Método específico que permite agregar una carta de tipo [[CartaClima]] al tablero de clima.
-   * @param cartaClima : Carta de tipo [[CartaClima]] que se desea agregar al tablero de clima.
-   */
-  def anadirCartaClima(cartaClima: CartaClima): Unit = {
-    conjuntoCartas = cartaClima :: conjuntoCartas
-  }
 }

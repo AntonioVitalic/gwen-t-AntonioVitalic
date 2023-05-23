@@ -35,6 +35,7 @@ class CartaUnidadCuerpo(nombre: String, efecto: String, fuerza: Int)
    */
   def anadirCartaCuerpo(tablero: AbstractTablero): Unit = {
     tablero.anadirCarta(this)
+    println("Se añadió una Carta de tipo unidad de combate cuerpo a cuerpo a la zona de combate cuerpo a cuerpo.")
   }
 
 }

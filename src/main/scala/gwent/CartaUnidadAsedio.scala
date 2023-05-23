@@ -38,5 +38,6 @@ class CartaUnidadAsedio (nombre : String, efecto : String, fuerza : Int)
    */
   def anadirCartaAsedio(tablero : AbstractTablero): Unit = {
     tablero.anadirCarta(this)
+    println("Se añadió una Carta de tipo unidad de combate de asedio a la zona de asedio.")
   }
 }

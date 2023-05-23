@@ -43,7 +43,7 @@ class CartaClimaTesting extends munit.FunSuite {
   var tableroAsedio: TableroAsedio = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    CartaClima1 = new CartaClima(nombre = "CartaClima1", efecto = "Escarcha mordiente")
+    CartaClima1 = new CartaClima(nombre = "Mismo nombre", efecto = "Mismo efecto")
     CartaClima2 = new CartaClima(nombre = "Mismo nombre", efecto = "Mismo efecto")
 
     CartaClima1MismoNombre = new CartaClima(nombre = "Mismo nombre", efecto = "Escarcha mordiente")

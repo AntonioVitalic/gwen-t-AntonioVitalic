@@ -36,7 +36,7 @@ trait Carta{
    * @param tableroAsedio
    */
   def anadirCartaAsedio(tableroAsedio : TableroAsedio) : Unit = {
-    tableroAsedio.anadirCarta(this)
+    //tableroAsedio.anadirCarta(this)
   }
 
   /**
@@ -45,7 +45,7 @@ trait Carta{
    * @param tableroCuerpo
    */
   def anadirCartaCuerpo(tableroCuerpo : TableroCuerpo) : Unit = {
-    tableroCuerpo.anadirCarta(this)
+    //tableroCuerpo.anadirCarta(this)
   }
 
   /**
@@ -54,7 +54,7 @@ trait Carta{
    * @param tableroDistancia
    */
   def anadirCartaDistancia(tableroDistancia : TableroDistancia) : Unit = {
-    tableroDistancia.anadirCarta(this)
+    //tableroDistancia.anadirCarta(this)
   }
 
   /**
@@ -63,6 +63,6 @@ trait Carta{
    * @param tableroClima
    */
   def anadirCartaClima(tableroClima : TableroClima) : Unit = {
-    tableroClima.anadirCarta(this)
+    //tableroClima.anadirCarta(this)
   }
 }
