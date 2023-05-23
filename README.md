@@ -14,29 +14,37 @@ A grandes rasgos el juego tendrá dos jugadores, uno controlado por el usuario y
 Cada jugador tendrá un mazo y una mano de cartas que puede jugar en un tablero en una partida al mejor de tres
 rondas.
 
-En específico, para la Entrega Parcial 1 de la Tarea 1, se aplicó la
-estrategia de test-driven development para implementar los elementos básicos
-del juego: Jugador y Carta, señaladas en las secciones 1.1 Jugador y 1.3 Carta del
-documento [Enunciado Proyecto V1.0.1.pdf](https://www.u-cursos.cl/ingenieria/2023/1/CC3002/2/material_docente/detalle?id=6440453) en material docente del curso, a excepción de las funcionalidades
-que involucren al Tablero y/o las Clasificaciones de las cartas.
+Se continua el trabajo realizado para la Entrega Parcial 1 y Tarea 1.
 
-A su vez, para la Tarea 1, se aplicó el concepto de herencia para las implementaciones
-de las clases y métodos, además de la sobre-escritura de parámetros y métodos, y finalmente
-el testeo con el método Equals.
+En específico, para la Entrega Parcial 3 de la Tarea 2, se aplicó la
+estrategia de *double dispatch* para implementar la acción de jugar 
+una carta específica en secciones específicas del tablero, por medio 
+de clases y métodos adecuados según las restricciones que tiene cada 
+tipo de carta y tablero del juego, señaladas en las secciones 1.2 Tablero y 1.3 Cartas del
+documento [Enunciado Proyecto V1.0.2.pdf](https://www.u-cursos.cl/ingenieria/2023/1/CC3002/2/material_docente/detalle?id=6465061) 
+en material docente del curso, así evitando usar pattern matching.
 
 **Descripción**
 
-En relación a la sección 1.1 Jugador, dado que en el juego hay dos jugadores; un usuario humano
-y una computadora, sumado a que éstos comparten los atributos Nombre, SeccionTablero,
-ContadorGemas, MazoCartas, ManoCartas, se decidió crear un trait (interfaz) Jugador, la cual
-se "extendió" o heredó en las clases Usuario y Computadora. Por otro lado, los jugadores Usuario y Computadora
-tienen acciones en común, como jugar una carta de la mano, y robar carta del mazo, por lo cual
-se creó el train AccionesJugador con los métodos JugarCartaMano() y RobarCartaMazo().
-Dado que se debe usar Scala 2, los trait's Jugador y AccionesJugador no llevan parámetros.
+En relación a la sección 1.2 Tablero, dado que en el juego hay 
+3 zonas de combate para cada jugador, sumado a una zona de clima
+que comparten ambos, se decidió crear una clase abstracta para el
+tablero, en el que se heredarán 4 clases para los 4 tableros. Además, 
+se instancian los 4 tableros como valores dentro de la clase abstracta AbstractTablero,
+y así un Jugador puede acceder a los 4 tableros.
 
-En relación a la sección 1.3 Carta, dado que hay dos tipos de carta: CartaUnidad y CartaClima,
-se decidió crear una trait (interfaz) Carta.
+En relación a los métodos, primero se define el método
+jugarCartaMano(carta: Carta), el que utiliza la seccion del tablero
+en el que el Jugador jugará la carta, en el método
+_seccionTablero.anadirCarta(carta). Este método se declara en la clase abstracta
+AbstractTablero, y se implementa en las 4 clases hijas de esta clase abstracta,
+las cuales corresponden a los 4 tableros. Se overridea el método anadirCarta en cada subclase
+y se llama a un método anadirCarta específico para cada tablero, el que se define
+en cada subclase. Estos métodos se declaran en el trait/interfaz Carta, y se overridean en 
+y se definen en cada subclase de Carta (3 clases de carta de tipo unidad y 1 clase para cartas de tipo clima).
 
-Posteriormente, se crearon los correspondientes tests para las clases Usuario, Computadora, CartaUnidad y CartaClima. 
+Posteriormente, se crearon los correspondientes tests para las clases Jugador,
+CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, TableroAsedio,
+TableroCuerpo, TableroDistancia y TableroClima. 
 
 
