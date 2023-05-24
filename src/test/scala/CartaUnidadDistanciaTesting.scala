@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 
-import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, Jugador, TableroAsedio, TableroDistancia}
+import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, Jugador, TableroDistancia}
 
 
 /** Una clase para testear la clase CartaUnidadDistancia.
@@ -8,13 +8,6 @@ import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnid
  * La carta de unidad para la el tablero de distancia se define por su efecto y fuerza.
  *
  * @constructor Crea una nueva CartaClima con su efecto.
- *
- * @example
- * {{{
- * val CartaClima = new CartaClima("Escarcha mordiente")
- * val Efecto = CartaClima.Efecto()
- * println(s"La carta de clima tiene el efecto $Efecto")
- * }}}
  *
  * @author Antonio Vitalic
  */
@@ -41,8 +34,8 @@ class CartaUnidadDistanciaTesting extends munit.FunSuite {
   var CartaUnidadDistanciaEquals: CartaClima = _
   var tableroDistancia: TableroDistancia = _
 
-  var carta1 = new CartaUnidadDistancia(nombre = "Carta1", efecto = "Escarcha mordiente", fuerza = 10)
-  var carta2 = new CartaUnidadDistancia(nombre = "Carta2", efecto = "Niebla impenetrable", fuerza = 5)
+  var carta1 = new CartaUnidadDistancia(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 10)
+  var carta2 = new CartaUnidadDistancia(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 5)
 
   override def beforeEach(context: BeforeEach): Unit = {
     CartaUnidadDistancia1 = new CartaUnidadDistancia(nombre = "Mismo nombre", efecto = "Mismo efecto", fuerza = 10)
@@ -112,13 +105,13 @@ class CartaUnidadDistanciaTesting extends munit.FunSuite {
   test("Una CartaUnidadDistancia no es un CartaClima"){
     assert(!CartaUnidadDistanciaEquals.equals(CartaClima))
   }
-  /**
+
   test("Método anadirCartaDistancia de CartaUnidadDistancia") {
     val jugador = new Jugador(_nombre = "Jugador", _seccionTablero = tableroDistancia, _contadorGemas = 2,
       _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
     val carta = new CartaUnidadDistancia(nombre = "Carta Distancia genérica", efecto = "Refuerzo moral", fuerza = 10)
     carta.anadirCartaDistancia(jugador._seccionTablero)
     assertEquals(jugador.ManoCartas().length, 0)
-    assertEquals(jugador.ManoCartas().length, 0)
-  }*/
+  }
+
 }

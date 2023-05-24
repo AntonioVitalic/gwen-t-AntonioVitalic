@@ -9,13 +9,6 @@ import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnid
  *
  * @constructor Crea una nueva CartaClima con su efecto.
  *
- * @example
- * {{{
- * val CartaClima = new CartaClima("Escarcha mordiente")
- * val Efecto = CartaClima.Efecto()
- * println(s"La carta de clima tiene el efecto $Efecto")
- * }}}
- *
  * @author Antonio Vitalic
  */
 class CartaUnidadAsedioTesting extends munit.FunSuite {
@@ -41,8 +34,8 @@ class CartaUnidadAsedioTesting extends munit.FunSuite {
   var CartaUnidadAsedioEquals: CartaClima = _
   var tableroAsedio: TableroAsedio = _
 
-  var carta1 = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Escarcha mordiente", fuerza = 10)
-  var carta2 = new CartaUnidadAsedio(nombre = "Carta2", efecto = "Niebla impenetrable", fuerza = 5)
+  var carta1 = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 10)
+  var carta2 = new CartaUnidadAsedio(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 5)
 
   override def beforeEach(context: BeforeEach): Unit = {
     CartaUnidadAsedio1 = new CartaUnidadAsedio(nombre = "Mismo nombre", efecto = "Mismo efecto", fuerza = 10)
@@ -112,13 +105,13 @@ class CartaUnidadAsedioTesting extends munit.FunSuite {
   test("Una CartaUnidadAsedio no es un CartaClima"){
     assert(!CartaUnidadAsedioEquals.equals(CartaClima))
   }
-  /**
+
   test("Método anadirCartaAsedio de CartaUnidadAsedio") {
     val jugador = new Jugador(_nombre = "Jugador", _seccionTablero = tableroAsedio, _contadorGemas = 2,
       _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
     val carta = new CartaUnidadAsedio(nombre = "Carta Asedio genérica", efecto = "Refuerzo moral", fuerza = 10)
-    carta.anadirCartaAsedio(tableroAsedio)
+    carta.anadirCartaAsedio(jugador._seccionTablero)
     assertEquals(jugador.ManoCartas().length, 0)
   }
-  */
+
 }

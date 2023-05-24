@@ -190,11 +190,12 @@ class JugadorTesting extends munit.FunSuite {
 
 
   test("jugarCartaMano()"){
-    // implementamos un test para el método jugarCartaMano()
     val JugadorLuma = new Jugador(_nombre = "Luma", _seccionTablero = tableroAsedio,
       _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+    JugadorLuma._manoCartas = List(Carta1, Carta2)
+    JugadorLuma._mazoCartas = List(Carta3, Carta4)
     JugadorLuma.jugarCartaMano(CartaUnidadAsedioEquals)
-    assert(JugadorLuma.ManoCartas().isEmpty)
+    assertEquals(JugadorLuma.ManoCartas().length, 1)
   }
 
 }

@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 
-import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, Jugador, TableroAsedio}
+import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, Jugador, TableroClima}
 
 
 /** Una clase para testear la clase CartaClima.
@@ -8,13 +8,6 @@ import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnid
  * La carta de clima se define por su efecto.
  *
  * @constructor Crea una nueva CartaClima con su efecto.
- *
- * @example
- * {{{
- * val CartaClima = new CartaClima("Escarcha mordiente")
- * val Efecto = CartaClima.Efecto()
- * println(s"La carta de clima tiene el efecto $Efecto")
- * }}}
  *
  * @author Antonio Vitalic
  */
@@ -40,7 +33,11 @@ class CartaClimaTesting extends munit.FunSuite {
   var CartaUnidadCuerpo : CartaUnidadCuerpo = _
   var CartaUnidadDistancia : CartaUnidadDistancia = _
   var CartaClimaEquals: CartaClima = _
-  var tableroAsedio: TableroAsedio = _
+  var tableroClima: TableroClima = _
+
+  var carta1 = new CartaClima(nombre = "Carta1", efecto = "Escarcha mordiente")
+  var carta2 = new CartaClima(nombre = "Carta2", efecto = "Niebla impenetrable")
+
 
   override def beforeEach(context: BeforeEach): Unit = {
     CartaClima1 = new CartaClima(nombre = "Mismo nombre", efecto = "Mismo efecto")
@@ -57,12 +54,14 @@ class CartaClimaTesting extends munit.FunSuite {
     CartaClimaLluvia = new CartaClima(nombre = "Carta Lluvia", efecto = "Lluvia torrencial")
     CartaClimaDespejado = new CartaClima(nombre = "Carta Despejado", efecto = "Clima despejado")
 
-    JugadorEquals = new Jugador(_nombre = "Jugador", _seccionTablero = tableroAsedio, _contadorGemas = 2,
+    JugadorEquals = new Jugador(_nombre = "Jugador", _seccionTablero = tableroClima, _contadorGemas = 2,
       _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
     CartaUnidadAsedio = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 10)
     CartaUnidadCuerpo = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 10)
     CartaUnidadDistancia = new CartaUnidadDistancia(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 10)
     CartaClimaEquals = new CartaClima("Carta4","Escarcha mordiente")
+
+    tableroClima = new TableroClima(conjuntoCartas = List(carta1, carta2))
 
   }
 
@@ -89,5 +88,13 @@ class CartaClimaTesting extends munit.FunSuite {
 
   test("CartaClima's con distinto nombre son distintos") {
     assert(!CartaClima1MismoEfecto.equals(CartaClima2MismoEfecto))
+  }
+
+  test("Método anadirCartaClima de CartaUnidadClima") {
+    val jugador = new Jugador(_nombre = "Jugador", _seccionTablero = tableroClima, _contadorGemas = 2,
+      _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+    val carta = new CartaClima(nombre = "Carta Clima genérica", efecto = "Escarcha mordiente")
+    carta.anadirCartaClima(jugador._seccionTablero)
+    assertEquals(jugador.ManoCartas().length, 0)
   }
 }

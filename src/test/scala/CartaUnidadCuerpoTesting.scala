@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 
-import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, Jugador, TableroAsedio, TableroCuerpo}
+import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, Jugador, TableroCuerpo}
 
 
 /** Una clase para testear la clase CartaUnidadCuerpo.
@@ -8,13 +8,6 @@ import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnid
  * La carta de unidad para la el tablero de cuerpo se define por su efecto y fuerza.
  *
  * @constructor Crea una nueva CartaClima con su efecto.
- *
- * @example
- * {{{
- * val CartaClima = new CartaClima("Escarcha mordiente")
- * val Efecto = CartaClima.Efecto()
- * println(s"La carta de clima tiene el efecto $Efecto")
- * }}}
  *
  * @author Antonio Vitalic
  */
@@ -41,8 +34,8 @@ class CartaUnidadCuerpoTesting extends munit.FunSuite {
   var CartaUnidadCuerpoEquals: CartaClima = _
   var tableroCuerpo: TableroCuerpo = _
 
-  var carta1 = new CartaUnidadCuerpo(nombre = "Carta1", efecto = "Escarcha mordiente", fuerza = 10)
-  var carta2 = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Niebla impenetrable", fuerza = 5)
+  var carta1 = new CartaUnidadCuerpo(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 10)
+  var carta2 = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 5)
 
   override def beforeEach(context: BeforeEach): Unit = {
     CartaUnidadCuerpo1 = new CartaUnidadCuerpo(nombre = "Mismo nombre", efecto = "Mismo efecto", fuerza = 10)
@@ -112,13 +105,13 @@ class CartaUnidadCuerpoTesting extends munit.FunSuite {
   test("Una CartaUnidadCuerpo no es un CartaClima"){
     assert(!CartaUnidadCuerpoEquals.equals(CartaClima))
   }
-  /**
+
   test("Método anadirCartaCuerpo de CartaUnidadCuerpo") {
     val jugador = new Jugador(_nombre = "Jugador", _seccionTablero = tableroCuerpo, _contadorGemas = 2,
       _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
     val carta = new CartaUnidadCuerpo(nombre = "Carta Cuerpo genérica", efecto = "Refuerzo moral", fuerza = 10)
     carta.anadirCartaCuerpo(jugador._seccionTablero)
     assertEquals(jugador.ManoCartas().length, 0)
-    assertEquals(jugador.ManoCartas().length, 0)
-  }*/
+  }
+
 }
