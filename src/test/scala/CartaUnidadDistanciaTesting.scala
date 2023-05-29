@@ -28,10 +28,11 @@ class CartaUnidadDistanciaTesting extends munit.FunSuite {
   var CartaUnidadDistancia: CartaUnidadDistancia = _
 
   var JugadorEquals: Jugador = _
-  var CartaUnidadCuerpo : CartaUnidadCuerpo = _
-  var CartaUnidadAsedio : CartaUnidadAsedio = _
-  var CartaClima : CartaClima = _
-  var CartaUnidadDistanciaEquals: CartaClima = _
+  var CartaUnidadAsedioEquals: CartaUnidadAsedio = _
+  var CartaUnidadCuerpoEquals: CartaUnidadCuerpo = _
+  var CartaUnidadDistanciaEquals: CartaUnidadDistancia = _
+  var CartaClimaEquals: CartaClima = _
+
   var tableroDistancia: TableroDistancia = _
 
   var carta1 = new CartaUnidadDistancia(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 10)
@@ -52,12 +53,12 @@ class CartaUnidadDistanciaTesting extends munit.FunSuite {
 
     CartaUnidadDistancia = new CartaUnidadDistancia(nombre = "Carta Distancia genérica", efecto = "Refuerzo moral", fuerza = 10)
 
-    JugadorEquals = new Jugador(_nombre = "Jugador", _seccionTablero = tableroDistancia, _contadorGemas = 2,
-      _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
-    CartaUnidadCuerpo = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 10)
-    CartaUnidadAsedio = new CartaUnidadAsedio(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 10)
-    CartaClima = new CartaClima(nombre = "Carta4", efecto = "Escarcha mordiente")
-    CartaUnidadDistanciaEquals = new CartaClima("Carta4","Escarcha mordiente")
+    JugadorEquals = new Jugador(_nombre = "Mario", _seccionTablero = tableroDistancia,
+      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+    CartaUnidadAsedioEquals = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 15)
+    CartaUnidadCuerpoEquals = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 10)
+    CartaUnidadDistanciaEquals = new CartaUnidadDistancia(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 5)
+    CartaClimaEquals = new CartaClima(nombre = "Carta4", efecto = "Escarcha mordiente")
 
     tableroDistancia = new TableroDistancia(conjuntoCartas = List(carta1, carta2))
 
@@ -95,15 +96,15 @@ class CartaUnidadDistanciaTesting extends munit.FunSuite {
   }
 
   test("Un CartaUnidadDistancia no es una CartaUnidadCuerpo") {
-    assert(!CartaUnidadDistanciaEquals.equals(CartaUnidadCuerpo))
+    assert(!CartaUnidadDistanciaEquals.equals(CartaUnidadCuerpoEquals))
   }
 
-  test("Una CartaUnidadDistancia no es una CartaUnidadDistancia"){
-    assert(!CartaUnidadDistanciaEquals.equals(CartaUnidadDistancia))
+  test("Una CartaUnidadDistancia no es una CartaUnidadAsedio"){
+    assert(!CartaUnidadDistanciaEquals.equals(CartaUnidadAsedioEquals))
   }
 
   test("Una CartaUnidadDistancia no es un CartaClima"){
-    assert(!CartaUnidadDistanciaEquals.equals(CartaClima))
+    assert(!CartaUnidadDistanciaEquals.equals(CartaClimaEquals))
   }
 
   test("Método anadirCartaDistancia de CartaUnidadDistancia") {

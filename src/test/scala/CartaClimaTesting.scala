@@ -30,9 +30,11 @@ class CartaClimaTesting extends munit.FunSuite {
   var CartaUnidadAsedio: CartaUnidadAsedio = _ // Fuerza = 10
 
   var JugadorEquals: Jugador = _
-  var CartaUnidadCuerpo : CartaUnidadCuerpo = _
-  var CartaUnidadDistancia : CartaUnidadDistancia = _
+  var CartaUnidadAsedioEquals: CartaUnidadAsedio = _
+  var CartaUnidadCuerpoEquals: CartaUnidadCuerpo = _
+  var CartaUnidadDistanciaEquals: CartaUnidadDistancia = _
   var CartaClimaEquals: CartaClima = _
+
   var tableroClima: TableroClima = _
 
   var carta1 = new CartaClima(nombre = "Carta1", efecto = "Escarcha mordiente")
@@ -56,9 +58,9 @@ class CartaClimaTesting extends munit.FunSuite {
 
     JugadorEquals = new Jugador(_nombre = "Jugador", _seccionTablero = tableroClima, _contadorGemas = 2,
       _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
-    CartaUnidadAsedio = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 10)
-    CartaUnidadCuerpo = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 10)
-    CartaUnidadDistancia = new CartaUnidadDistancia(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 10)
+    CartaUnidadAsedioEquals = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 10)
+    CartaUnidadCuerpoEquals = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 10)
+    CartaUnidadDistanciaEquals = new CartaUnidadDistancia(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 10)
     CartaClimaEquals = new CartaClima("Carta4","Escarcha mordiente")
 
     tableroClima = new TableroClima(conjuntoCartas = List(carta1, carta2))

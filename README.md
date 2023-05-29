@@ -14,9 +14,10 @@ A grandes rasgos el juego tendrá dos jugadores, uno controlado por el usuario y
 Cada jugador tendrá un mazo y una mano de cartas que puede jugar en un tablero en una partida al mejor de tres
 rondas.
 
-Se continua el trabajo realizado para la Entrega Parcial 1 y Tarea 1.
+Se continúa el trabajo realizado para la Entrega Parcial 1 (Tarea 1), Tarea 1, 
+Entrega Parcial 2 (Tarea 2) y Entrega Parcial 3 (Tarea 2).
 
-En específico, para la Entrega Parcial 3 de la Tarea 2, se aplicó la
+En específico, para la Tarea 2 en general, se aplicó la
 estrategia de *double dispatch* para implementar la acción de jugar 
 una carta específica en secciones específicas del tablero, por medio 
 de clases y métodos adecuados según las restricciones que tiene cada 
@@ -25,6 +26,8 @@ documento [Enunciado Proyecto V1.0.2.pdf](https://www.u-cursos.cl/ingenieria/202
 en material docente del curso, así evitando usar pattern matching.
 
 **Descripción**
+Primero, en relación a la Entrega Parcial 3 (Tarea 2), de la cual se avanzó mucho (se adelantó trabajo
+al hacer double dispatch), se tiene lo siguiente:
 
 En relación a la sección 1.2 Tablero, dado que en el juego hay 
 3 zonas de combate para cada jugador, sumado a una zona de clima
@@ -45,6 +48,11 @@ y se definen en cada subclase de Carta (3 clases de carta de tipo unidad y 1 cla
 
 Posteriormente, se crearon los correspondientes tests para las clases Jugador,
 CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, TableroAsedio,
-TableroCuerpo, TableroDistancia y TableroClima. 
+TableroCuerpo, TableroDistancia y TableroClima.
+
+En relación a la Tarea 2, se incluyeron métodos setters para los campos private var relacionados a la mano de cartas
+y mazo de cartas, para la clase Jugador. Se definió el método robarCartaMazo() que entrega la carta "robada" del mazo.
+Se hicieron los testings correspondientes, alcanzando un 95% de coverage. Se incluye un diagrama
+UML del estado actual del código.
 
 

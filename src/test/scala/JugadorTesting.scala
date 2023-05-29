@@ -71,6 +71,13 @@ class JugadorTesting extends munit.FunSuite {
     Carta3 = new CartaUnidadDistancia(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 5)
     Carta4 = new CartaClima(nombre = "Carta4", efecto = "Escarcha mordiente")
 
+    JugadorEquals = new Jugador(_nombre = "Mario", _seccionTablero = tableroAsedio,
+      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+    CartaUnidadAsedioEquals = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 15)
+    CartaUnidadCuerpoEquals = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 10)
+    CartaUnidadDistanciaEquals = new CartaUnidadDistancia(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 5)
+    CartaClimaEquals = new CartaClima(nombre = "Carta4", efecto = "Escarcha mordiente")
+
   }
 
   test("Un Jugador debe tener nombre") {
@@ -117,7 +124,7 @@ class JugadorTesting extends munit.FunSuite {
     assertEquals(JugadorAsedio.MazoCartas(), List[Carta]())
     assertEquals(JugadorClima.MazoCartas(), List[Carta]())
   }
-  /**
+
   test("Un Jugador no es una CartaUnidadAsedio") {
     assert(!JugadorEquals.equals(CartaUnidadAsedioEquals))
   }
@@ -132,68 +139,96 @@ class JugadorTesting extends munit.FunSuite {
 
   test("Un Jugador no es una CartaClima") {
     assert(!JugadorEquals.equals(CartaClimaEquals))
-  }*/
+  }
+
+  test("robarCartaMano"){
+    var JugadorToadette = new Jugador(_nombre = "Toadette",
+      _seccionTablero = tableroAsedio, _contadorGemas = 2,
+      _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
+    val Carta5 = new CartaUnidadAsedio(nombre = "Carta5", efecto = "Refuerzo moral", fuerza = 15)
+    val Carta6 = new CartaClima(nombre = "Carta6", efecto = "Escarcha mordiente")
+    JugadorToadette.MazoCartas_=(List(Carta5, Carta6)) // "seteamos" el campo _mazoCartas
+    assert(JugadorToadette.robarCartaMazo() == Carta5)
+  }
 
   test("Getter Nombre") {
     val JugadorToad = new Jugador(_nombre = "Toad", _seccionTablero = tableroAsedio,
-      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+      _contadorGemas = 2, _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
     assert(JugadorToad.Nombre == "Toad")
   }
 
   test("Getter SeccionTablero") {
     val JugadorToad = new Jugador(_nombre = "Toad", _seccionTablero = tableroAsedio,
-      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+      _contadorGemas = 2, _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
     assert(JugadorToad.SeccionTablero == tableroAsedio)
   }
 
   test("Getter ContadorGemas") {
     val JugadorToad = new Jugador(_nombre = "Toad", _seccionTablero = tableroAsedio,
-      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+      _contadorGemas = 2, _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
     assert(JugadorToad.ContadorGemas == 2)
   }
 
   test("Getter MazoCartas") {
     val JugadorToad = new Jugador(_nombre = "Toad", _seccionTablero = tableroAsedio,
-      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
-    assert(JugadorToad.MazoCartas == List[Carta]())
+      _contadorGemas = 2, _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
+    assert(JugadorToad.MazoCartas == List(Carta1, Carta2))
   }
 
   test("Getter ManoCartas") {
     val JugadorToad = new Jugador(_nombre = "Toad", _seccionTablero = tableroAsedio,
-      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
-    assert(JugadorToad.ManoCartas == List[Carta]())
+      _contadorGemas = 2, _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
+    assert(JugadorToad.ManoCartas == List(Carta3, Carta4))
+  }
+  // Setters
+  test("Setter SeccionTablero") {
+    val JugadorToadette = new Jugador(_nombre = "Toadette",
+      _seccionTablero = tableroAsedio, _contadorGemas = 2,
+      _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
+    JugadorToadette.SeccionTablero_= (tableroClima)
+    assert(JugadorToadette._seccionTablero == tableroClima)
   }
 
   test("Setter ContadorGemas") {
     val JugadorToadette = new Jugador(_nombre = "Toadette",
       _seccionTablero = tableroAsedio, _contadorGemas = 2,
-      _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+      _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
     JugadorToadette.ContadorGemas_= (1)
     assert(JugadorToadette._contadorGemas == 1)
   }
 
-  test("_MazoCartas es vacío") {
-    val JugadorLuma = new Jugador(_nombre = "Luma", _seccionTablero = tableroAsedio,
-      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
-    assert(JugadorLuma.MazoCartas().isEmpty)
-    JugadorLuma.robarCartaMazo()
-    assertEquals(JugadorLuma.MazoCartas().length, 0)
+  test("Setter MazoCartas") {
+    var JugadorToadette = new Jugador(_nombre = "Toadette",
+      _seccionTablero = tableroAsedio, _contadorGemas = 2,
+      _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
+    val Carta5 = new CartaUnidadAsedio(nombre = "Carta5", efecto = "Refuerzo moral", fuerza = 15)
+    val Carta6 = new CartaClima(nombre = "Carta6", efecto = "Escarcha mordiente")
+    JugadorToadette.MazoCartas_= (List(Carta5, Carta6)) // "seteamos" el campo _mazoCartas
+    assert(JugadorToadette.MazoCartas() == List(Carta5, Carta6)) // obtenemos el campo _manoCartas con el getter
+  }
+
+  test("Setter ManoCartas"){
+    val JugadorToadette = new Jugador(_nombre = "Toadette",
+      _seccionTablero = tableroAsedio, _contadorGemas = 2,
+      _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
+    val Carta5 = new CartaUnidadAsedio(nombre = "Carta5", efecto = "Refuerzo moral", fuerza = 15)
+    val Carta6 = new CartaClima(nombre = "Carta6", efecto = "Escarcha mordiente")
+    JugadorToadette.ManoCartas_= (List(Carta5, Carta6)) // "seteamos" el campo _manoCartas
+    assert(JugadorToadette.ManoCartas == List(Carta5, Carta6)) // obtenemos el campo _manoCartas con el getter
   }
 
   test("barajaMazoCartas()"){
     // implementamos un test para el método barajaMazoCartas()
     val JugadorLuma = new Jugador(_nombre = "Luma", _seccionTablero = tableroAsedio,
-      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+      _contadorGemas = 2, _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
     JugadorLuma.barajaMazoCartas()
-    assert(JugadorLuma.MazoCartas().isEmpty)
+    assert(JugadorLuma.MazoCartas().length == 2)
   }
 
 
   test("jugarCartaMano()"){
     val JugadorLuma = new Jugador(_nombre = "Luma", _seccionTablero = tableroAsedio,
-      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
-    JugadorLuma._manoCartas = List(Carta1, Carta2)
-    JugadorLuma._mazoCartas = List(Carta3, Carta4)
+      _contadorGemas = 2, _mazoCartas = List(Carta1, Carta2), _manoCartas = List(Carta3, Carta4))
     JugadorLuma.jugarCartaMano(CartaUnidadAsedioEquals)
     assertEquals(JugadorLuma.ManoCartas().length, 1)
   }

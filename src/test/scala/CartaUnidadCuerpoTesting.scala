@@ -28,10 +28,11 @@ class CartaUnidadCuerpoTesting extends munit.FunSuite {
   var CartaUnidadCuerpo: CartaUnidadCuerpo = _
 
   var JugadorEquals: Jugador = _
-  var CartaUnidadAsedio : CartaUnidadAsedio = _
-  var CartaUnidadDistancia : CartaUnidadDistancia = _
-  var CartaClima : CartaClima = _
-  var CartaUnidadCuerpoEquals: CartaClima = _
+  var CartaUnidadAsedioEquals: CartaUnidadAsedio = _
+  var CartaUnidadCuerpoEquals: CartaUnidadCuerpo = _
+  var CartaUnidadDistanciaEquals: CartaUnidadDistancia = _
+  var CartaClimaEquals: CartaClima = _
+
   var tableroCuerpo: TableroCuerpo = _
 
   var carta1 = new CartaUnidadCuerpo(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 10)
@@ -52,12 +53,12 @@ class CartaUnidadCuerpoTesting extends munit.FunSuite {
 
     CartaUnidadCuerpo = new CartaUnidadCuerpo(nombre = "Carta Cuerpo genérica", efecto = "Refuerzo moral", fuerza = 10)
 
-    JugadorEquals = new Jugador(_nombre = "Jugador", _seccionTablero = tableroCuerpo, _contadorGemas = 2,
-      _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
-    CartaUnidadAsedio = new CartaUnidadAsedio(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 10)
-    CartaUnidadDistancia = new CartaUnidadDistancia(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 10)
-    CartaClima = new CartaClima(nombre = "Carta4", efecto = "Escarcha mordiente")
-    CartaUnidadCuerpoEquals = new CartaClima("Carta4","Escarcha mordiente")
+    JugadorEquals = new Jugador(_nombre = "Mario", _seccionTablero = tableroCuerpo,
+      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+    CartaUnidadAsedioEquals = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 15)
+    CartaUnidadCuerpoEquals = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 10)
+    CartaUnidadDistanciaEquals = new CartaUnidadDistancia(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 5)
+    CartaClimaEquals = new CartaClima(nombre = "Carta4", efecto = "Escarcha mordiente")
 
     tableroCuerpo = new TableroCuerpo(conjuntoCartas = List(carta1, carta2))
 
@@ -94,16 +95,16 @@ class CartaUnidadCuerpoTesting extends munit.FunSuite {
     assert(!CartaUnidadCuerpoEquals.equals(JugadorEquals))
   }
 
-  test("Un CartaUnidadCuerpo no es una CartaUnidadCuerpo") {
-    assert(!CartaUnidadCuerpoEquals.equals(CartaUnidadCuerpo))
+  test("Un CartaUnidadCuerpo no es una CartaUnidadAsedio") {
+    assert(!CartaUnidadCuerpoEquals.equals(CartaUnidadAsedioEquals))
   }
 
   test("Una CartaUnidadCuerpo no es una CartaUnidadDistancia"){
-    assert(!CartaUnidadCuerpoEquals.equals(CartaUnidadDistancia))
+    assert(!CartaUnidadCuerpoEquals.equals(CartaUnidadDistanciaEquals))
   }
 
   test("Una CartaUnidadCuerpo no es un CartaClima"){
-    assert(!CartaUnidadCuerpoEquals.equals(CartaClima))
+    assert(!CartaUnidadCuerpoEquals.equals(CartaClimaEquals))
   }
 
   test("Método anadirCartaCuerpo de CartaUnidadCuerpo") {

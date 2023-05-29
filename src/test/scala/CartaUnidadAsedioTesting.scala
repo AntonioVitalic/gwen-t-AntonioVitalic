@@ -28,10 +28,11 @@ class CartaUnidadAsedioTesting extends munit.FunSuite {
   var CartaUnidadAsedio: CartaUnidadAsedio = _
 
   var JugadorEquals: Jugador = _
-  var CartaUnidadCuerpo : CartaUnidadCuerpo = _
-  var CartaUnidadDistancia : CartaUnidadDistancia = _
-  var CartaClima : CartaClima = _
-  var CartaUnidadAsedioEquals: CartaClima = _
+  var CartaUnidadAsedioEquals: CartaUnidadAsedio = _
+  var CartaUnidadCuerpoEquals: CartaUnidadCuerpo = _
+  var CartaUnidadDistanciaEquals: CartaUnidadDistancia = _
+  var CartaClimaEquals: CartaClima = _
+
   var tableroAsedio: TableroAsedio = _
 
   var carta1 = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 10)
@@ -52,12 +53,12 @@ class CartaUnidadAsedioTesting extends munit.FunSuite {
 
     CartaUnidadAsedio = new CartaUnidadAsedio(nombre = "Carta Asedio genérica", efecto = "Refuerzo moral", fuerza = 10)
 
-    JugadorEquals = new Jugador(_nombre = "Jugador", _seccionTablero = tableroAsedio, _contadorGemas = 2,
-      _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
-    CartaUnidadCuerpo = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 10)
-    CartaUnidadDistancia = new CartaUnidadDistancia(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 10)
-    CartaClima = new CartaClima(nombre = "Carta4", efecto = "Escarcha mordiente")
-    CartaUnidadAsedioEquals = new CartaClima("Carta4","Escarcha mordiente")
+    JugadorEquals = new Jugador(_nombre = "Mario", _seccionTablero = tableroAsedio,
+      _contadorGemas = 2, _mazoCartas = List[Carta](), _manoCartas = List[Carta]())
+    CartaUnidadAsedioEquals = new CartaUnidadAsedio(nombre = "Carta1", efecto = "Refuerzo moral", fuerza = 15)
+    CartaUnidadCuerpoEquals = new CartaUnidadCuerpo(nombre = "Carta2", efecto = "Vínculo estrecho", fuerza = 10)
+    CartaUnidadDistanciaEquals = new CartaUnidadDistancia(nombre = "Carta3", efecto = "Vínculo estrecho", fuerza = 5)
+    CartaClimaEquals = new CartaClima(nombre = "Carta4", efecto = "Escarcha mordiente")
 
     tableroAsedio = new TableroAsedio(conjuntoCartas = List(carta1, carta2))
 
@@ -95,15 +96,15 @@ class CartaUnidadAsedioTesting extends munit.FunSuite {
   }
 
   test("Un CartaUnidadAsedio no es una CartaUnidadCuerpo") {
-    assert(!CartaUnidadAsedioEquals.equals(CartaUnidadCuerpo))
+    assert(!CartaUnidadAsedioEquals.equals(CartaUnidadCuerpoEquals))
   }
 
   test("Una CartaUnidadAsedio no es una CartaUnidadDistancia"){
-    assert(!CartaUnidadAsedioEquals.equals(CartaUnidadDistancia))
+    assert(!CartaUnidadAsedioEquals.equals(CartaUnidadDistanciaEquals))
   }
 
   test("Una CartaUnidadAsedio no es un CartaClima"){
-    assert(!CartaUnidadAsedioEquals.equals(CartaClima))
+    assert(!CartaUnidadAsedioEquals.equals(CartaClimaEquals))
   }
 
   test("Método anadirCartaAsedio de CartaUnidadAsedio") {
