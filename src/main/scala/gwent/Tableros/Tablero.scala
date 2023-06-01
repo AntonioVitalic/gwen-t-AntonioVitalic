@@ -1,5 +1,7 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Tableros
+
+import gwent.Cartas.Carta
 
 /**
  * Interfaz que representa un tablero de juego.

@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 
-import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, Jugador, TableroAsedio, TableroClima, TableroCuerpo, TableroDistancia}
+import gwent.Jugador
+import cl.uchile.dcc.gwent.Cartas.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia}
+import cl.uchile.dcc.gwent.Tableros.{TableroAsedio, TableroClima, TableroCuerpo, TableroDistancia}
 
 
 /** Una clase para testear la clase Jugador.
@@ -14,7 +16,6 @@ import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnid
  * val Nombre = Jugador.nombre()
  * println(s"El nombre del Jugador es $nombre")
  * }}}
- *
  * @author Antonio Vitalic
  */
 

@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 
-import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, Jugador, TableroCuerpo}
+import gwent.Jugador
+import cl.uchile.dcc.gwent.Cartas.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia}
+import cl.uchile.dcc.gwent.Tableros.TableroCuerpo
 
 
 /** Una clase para testear la clase CartaUnidadCuerpo.
@@ -8,7 +10,6 @@ import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnid
  * La carta de unidad para la el tablero de cuerpo se define por su efecto y fuerza.
  *
  * @constructor Crea una nueva CartaClima con su efecto.
- *
  * @author Antonio Vitalic
  */
 class CartaUnidadCuerpoTesting extends munit.FunSuite {

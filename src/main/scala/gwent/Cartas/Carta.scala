@@ -1,6 +1,7 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Cartas
 
+import cl.uchile.dcc.gwent.Tableros.{TableroAsedio, TableroClima, TableroCuerpo, TableroDistancia}
 
 /** Trait (interfaz) que representa las cartas.
  *

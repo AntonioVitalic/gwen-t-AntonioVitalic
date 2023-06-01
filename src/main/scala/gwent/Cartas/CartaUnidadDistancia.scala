@@ -1,6 +1,7 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Cartas
 
+import cl.uchile.dcc.gwent.Tableros.AbstractTablero
 import java.util.Objects
 
 /** Clase que representa una carta de unidad de combate a distancia en el juego Gwen't.

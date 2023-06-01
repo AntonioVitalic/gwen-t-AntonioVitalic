@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Cartas
 
 /** Clase abstracta que representa una carta de unidad en el juego Gwen't.
  *

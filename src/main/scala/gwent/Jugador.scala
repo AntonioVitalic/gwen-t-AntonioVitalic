@@ -1,6 +1,9 @@
 package cl.uchile.dcc
 package gwent
 
+import cl.uchile.dcc.gwent.Cartas.Carta
+import cl.uchile.dcc.gwent.Tableros.AbstractTablero
+
 import java.util.Objects
 import scala.util.Random.shuffle
 

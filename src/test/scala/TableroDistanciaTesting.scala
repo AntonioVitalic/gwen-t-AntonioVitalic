@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 
-import gwent.{CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, TableroAsedio, TableroClima, TableroCuerpo, TableroDistancia}
+import cl.uchile.dcc.gwent.Cartas.{CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia}
+import cl.uchile.dcc.gwent.Tableros.{TableroAsedio, TableroClima, TableroCuerpo, TableroDistancia}
 
 class TableroDistanciaTesting extends munit.FunSuite{
   var TableroDistancia: TableroDistancia = _

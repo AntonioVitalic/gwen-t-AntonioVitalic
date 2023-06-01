@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 
-import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, Jugador, TableroClima}
+import gwent.Jugador
+import cl.uchile.dcc.gwent.Cartas.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia}
+import cl.uchile.dcc.gwent.Tableros.TableroClima
 
 
 /** Una clase para testear la clase CartaClima.
@@ -8,7 +10,6 @@ import gwent.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnid
  * La carta de clima se define por su efecto.
  *
  * @constructor Crea una nueva CartaClima con su efecto.
- *
  * @author Antonio Vitalic
  */
 class CartaClimaTesting extends munit.FunSuite {

@@ -1,5 +1,7 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Tableros
+
+import gwent.Cartas.{Carta, CartaUnidadDistancia}
 
 /**
  * Clase que representa el tablero de distancia.
@@ -7,7 +9,6 @@ package gwent
  * El tablero de distancia se define por ser un tablero que contiene cartas de tipo [[CartaUnidadDistancia]].
  *
  * @param conjuntoCartas : Conjunto de cartas de tipo CartaUnidadDistancia que contiene el tablero de distancia.
- *
  * @constructor Crea un nuevo TableroDistancia con un conjunto de cartas de tipo [[CartaUnidadDistancia]].
  * @author Antonio Vitalic
  */
