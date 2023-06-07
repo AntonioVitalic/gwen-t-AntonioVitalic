@@ -56,3 +56,6 @@ Se hicieron los testings correspondientes, alcanzando un 95% de coverage. Se inc
 UML del estado actual del código.
 
 
+## Diagrama de estados
+
+![Diagrama de estados](Diagrama_estados_Gwent.drawio.png)
