@@ -5,19 +5,12 @@ import gwent.GameController
 
 import cl.uchile.dcc.gwent.Cartas.Carta
 
-class StartState(controller: GameController) extends GameState {
+class StartState(context: GameController) extends GameState(context) {
   // equivalente a "Estado de la partida cuando se inicia un ronda"
-  override def startGame(): Unit = {
-    /* ... */
-    controller.state = new /* ... */
-  }
-  override def playCard(card: Carta): Unit = {
-    /* ... */
-    controller.state = new /* ... */
-  }
-  override def endTurn(): Unit = {
-    /* ... */
-    controller.state = new /* ... */
+  override def toSelectingTargetState(): Unit = {
+    context.state =
+      new SelectingTargetState(context)
+    context.promptSelection()
   }
 }
 

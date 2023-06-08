@@ -11,16 +11,11 @@ class GameController {
   // Estado actual del juego
   var state: GameState = new StartState(this)
 
-  def startGame(): Unit = {
-    state.startGame()
-    /* ... */
+  def startGame{
+    state = new StartState(this)
   }
 
-  def playCard(carta: Carta): Unit = {
-    /* ... */
-  }
-
-  def endTurn(): Unit = {
-    /* ... */
+  def promptSelection(): Unit = {
+    state.doAction()
   }
 }

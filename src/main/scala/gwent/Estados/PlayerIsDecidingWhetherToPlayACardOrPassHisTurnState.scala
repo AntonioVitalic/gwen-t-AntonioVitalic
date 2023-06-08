@@ -1,6 +1,13 @@
 package cl.uchile.dcc
 package gwent.Estados
 
-class PlayerIsDecidingWhetherToPlayACardOrPassHisTurnState {
+import gwent.GameController
 
+class PlayerIsDecidingWhetherToPlayACardOrPassHisTurnState
+(context: GameController) extends GameState(context){
+  override def toSelectingTargetState(): Unit = {
+    context.state =
+      new SelectingTargetState(context)
+    context.promptSelection()
+  }
 }

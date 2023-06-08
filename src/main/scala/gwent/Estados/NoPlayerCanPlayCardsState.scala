@@ -1,6 +1,12 @@
 package cl.uchile.dcc
 package gwent.Estados
 
-class NoPlayerCanPlayCardsState {
+import gwent.GameController
 
+class NoPlayerCanPlayCardsState (context: GameController) extends GameState(context){
+  override def toSelectingTargetState(): Unit = {
+    context.state =
+      new SelectingTargetState(context)
+    context.promptSelection()
+  }
 }
