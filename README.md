@@ -15,45 +15,13 @@ Cada jugador tendrá un mazo y una mano de cartas que puede jugar en un tablero 
 rondas.
 
 Se continúa el trabajo realizado para la Entrega Parcial 1 (Tarea 1), Tarea 1, 
-Entrega Parcial 2 (Tarea 2) y Entrega Parcial 3 (Tarea 2).
+Entrega Parcial 2 (Tarea 2), Entrega Parcial 3 (Tarea 2), Tarea 2 y Entrega Parcial 4 (Tarea 3).
 
-En específico, para la Tarea 2 en general, se aplicó la
-estrategia de *double dispatch* para implementar la acción de jugar 
-una carta específica en secciones específicas del tablero, por medio 
-de clases y métodos adecuados según las restricciones que tiene cada 
-tipo de carta y tablero del juego, señaladas en las secciones 1.2 Tablero y 1.3 Cartas del
+En específico, para la Tarea 3 en general, se busca implementar el patrón de diseño State
+para manejar estados del juego, y el patrón de diseño Composite (ésto, inspirado en la Auxiliar 9 Patrones de Diseño II) para manejar los efectos de las Cartas, según
+lo señalado en las secciones 1.5 Reglas del juego y 1.4 Efectos, respectivamente, del
 documento [Enunciado Proyecto V1.0.2.pdf](https://www.u-cursos.cl/ingenieria/2023/1/CC3002/2/material_docente/detalle?id=6465061) 
-en material docente del curso, así evitando usar pattern matching.
-
-**Descripción**
-Primero, en relación a la Entrega Parcial 3 (Tarea 2), de la cual se avanzó mucho (se adelantó trabajo
-al hacer double dispatch), se tiene lo siguiente:
-
-En relación a la sección 1.2 Tablero, dado que en el juego hay 
-3 zonas de combate para cada jugador, sumado a una zona de clima
-que comparten ambos, se decidió crear una clase abstracta para el
-tablero, en el que se heredarán 4 clases para los 4 tableros. Además, 
-se instancian los 4 tableros como valores dentro de la clase abstracta AbstractTablero,
-y así un Jugador puede acceder a los 4 tableros.
-
-En relación a los métodos, primero se define el método
-jugarCartaMano(carta: Carta), el que utiliza la seccion del tablero
-en el que el Jugador jugará la carta, en el método
-_seccionTablero.anadirCarta(carta). Este método se declara en la clase abstracta
-AbstractTablero, y se implementa en las 4 clases hijas de esta clase abstracta,
-las cuales corresponden a los 4 tableros. Se overridea el método anadirCarta en cada subclase
-y se llama a un método anadirCarta específico para cada tablero, el que se define
-en cada subclase. Estos métodos se declaran en el trait/interfaz Carta, y se overridean en 
-y se definen en cada subclase de Carta (3 clases de carta de tipo unidad y 1 clase para cartas de tipo clima).
-
-Posteriormente, se crearon los correspondientes tests para las clases Jugador,
-CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia, TableroAsedio,
-TableroCuerpo, TableroDistancia y TableroClima.
-
-En relación a la Tarea 2, se incluyeron métodos setters para los campos private var relacionados a la mano de cartas
-y mazo de cartas, para la clase Jugador. Se definió el método robarCartaMazo() que entrega la carta "robada" del mazo.
-Se hicieron los testings correspondientes, alcanzando un 95% de coverage. Se incluye un diagrama
-UML del estado actual del código.
+en material docente del curso.
 
 
 ## Diagrama de estados
