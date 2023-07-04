@@ -1,9 +1,7 @@
 package cl.uchile.dcc
 package gwent.Cartas
 
-import cl.uchile.dcc.gwent.Jugador
-import cl.uchile.dcc.gwent.Tableros.AbstractTablero
-
+import cl.uchile.dcc.gwent.Jugadores.Jugador
 import java.util.Objects
 
 /** Clase que representa una carta de unidad de combate cuerpo a cuerpo en el juego Gwen't.

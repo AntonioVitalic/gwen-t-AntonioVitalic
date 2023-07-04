@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 
-import gwent.Jugador
 import cl.uchile.dcc.gwent.Cartas.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia}
+import cl.uchile.dcc.gwent.Jugadores.Jugador
 import cl.uchile.dcc.gwent.Tableros.TableroDistancia
 
 

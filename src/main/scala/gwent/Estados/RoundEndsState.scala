@@ -3,7 +3,7 @@ package gwent.Estados
 
 import gwent.GameController
 
-class RoundEndsState (context: GameController) extends GameState(context){
+class RoundEndsState (context: GameController) extends GameState(context) {
   override def toSelectingTargetState(): Unit = {
     context.state =
       new SelectingTargetState(context)

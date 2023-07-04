@@ -1,8 +1,7 @@
 package cl.uchile.dcc
 package gwent.Cartas
 
-import cl.uchile.dcc.gwent.Jugador
-import cl.uchile.dcc.gwent.Tableros.{TableroAsedio, TableroClima, TableroCuerpo, TableroDistancia}
+import cl.uchile.dcc.gwent.Jugadores.Jugador
 
 /** Trait (interfaz) que representa las cartas.
  *
@@ -21,7 +20,7 @@ import cl.uchile.dcc.gwent.Tableros.{TableroAsedio, TableroClima, TableroCuerpo,
  *
  * @author Antonio Vitalic
  */
-trait Carta{
+trait Carta {
   /** El nombre de la carta.
    * Es una propiedad inmutable.
    */

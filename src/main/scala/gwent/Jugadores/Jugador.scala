@@ -1,10 +1,11 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Jugadores
 
-import cl.uchile.dcc.gwent.Cartas.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia}
-import cl.uchile.dcc.gwent.Tableros.AbstractTablero
+import gwent.Cartas._
+import gwent.Tableros.Tablero
 
 import java.util.Objects
+import scala.collection.mutable.ListBuffer
 import scala.util.Random.shuffle
 
 /** Una clase que representa un jugador genérico (un humano o una "computadora") .
@@ -31,10 +32,10 @@ import scala.util.Random.shuffle
  * @author Antonio Vitalic
  */
 
-class Jugador (val _nombre: String, var _seccionTablero: AbstractTablero,
+abstract class Jugador (val _nombre: String, var _seccionTablero: Tablero,
                var _contadorGemas: Int = 2,
-               private var _mazoCartas: List[Carta],
-               private var _manoCartas: List[Carta]) {
+               private var _mazoCartas: ListBuffer[Carta],
+               private var _manoCartas: ListBuffer[Carta]) {
   assert(_contadorGemas >= 0, "La cantidad de gemas debe ser mayor o igual a 0")
 
   /**

@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.Tableros
 
-import gwent.Cartas.{Carta, CartaUnidadAsedio}
+import gwent.Cartas.{CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo}
 
 /**
  * Clase que representa el tablero de asedio.
@@ -12,6 +12,12 @@ import gwent.Cartas.{Carta, CartaUnidadAsedio}
  * @constructor Crea un nuevo TableroAsedio con un conjunto de cartas de tipo [[CartaUnidadAsedio]].
  * @author Antonio Vitalic
  */
-class TableroAsedio(private var conjuntoCartas: List[CartaUnidadAsedio]) extends AbstractTablero {
+class ZonaAsedio(private var conjuntoCartas: List[CartaUnidadAsedio]) extends Tablero {
+  override def agregarAAsedio(carta: CartaUnidadAsedio): Unit = ???
 
+  override def agregarACuerpo(carta: CartaUnidadCuerpo): Unit = ???
+
+  override def agregarADistancia(carta: CartaUnidadAsedio): Unit = ???
+
+  override def agregarAClima(carta: CartaClima): Unit = ???
 }

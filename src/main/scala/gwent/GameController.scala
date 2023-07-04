@@ -2,11 +2,13 @@ package cl.uchile.dcc
 package gwent
 
 import gwent.Estados.{GameState, StartState}
+
 import cl.uchile.dcc.gwent.Cartas.Carta
+import cl.uchile.dcc.gwent.Jugadores.{Usuario, CPU}
 
 class GameController {
-  private var player1 = List.empty[Jugador]
-  private var player2 = List.empty[Jugador]
+  private var usuario = List.empty[Usuario]
+  private var cpu = List.empty[CPU]
 
   // Estado actual del juego
   var state: GameState = new StartState(this)

@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.Tableros
 
-import gwent.Cartas.{Carta, CartaClima}
+import gwent.Cartas.{CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo}
 
 /**
  * Clase que representa el tablero de clima.
@@ -12,6 +12,12 @@ import gwent.Cartas.{Carta, CartaClima}
  * @constructor Crea un nuevo TableroClima con un conjunto de cartas de tipo [[CartaClima]].
  * @author Antonio Vitalic
  */
-class TableroClima(private var conjuntoCartas: List[CartaClima]) extends AbstractTablero{
+class ZonaClima(private var conjuntoCartas: List[CartaClima]) extends Tablero{
+  override def agregarAAsedio(carta: CartaUnidadAsedio): Unit = ???
 
+  override def agregarACuerpo(carta: CartaUnidadCuerpo): Unit = ???
+
+  override def agregarADistancia(carta: CartaUnidadAsedio): Unit = ???
+
+  override def agregarAClima(carta: CartaClima): Unit = ???
 }
