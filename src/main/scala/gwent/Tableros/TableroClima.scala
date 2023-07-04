@@ -13,11 +13,5 @@ import gwent.Cartas.{Carta, CartaClima}
  * @author Antonio Vitalic
  */
 class TableroClima(private var conjuntoCartas: List[CartaClima]) extends AbstractTablero{
-  /**
-   * Método genérico que se overridea, el cual permite agregar una carta al tablero de clima.
-   * @param carta : Carta que se desea agregar al tablero de clima.
-   */
-  override def anadirCarta(carta: Carta): Unit = {
-    carta.anadirCartaClima(this)
-  }
+
 }

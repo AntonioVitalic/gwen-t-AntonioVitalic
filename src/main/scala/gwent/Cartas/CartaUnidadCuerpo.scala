@@ -1,7 +1,9 @@
 package cl.uchile.dcc
 package gwent.Cartas
 
+import cl.uchile.dcc.gwent.Jugador
 import cl.uchile.dcc.gwent.Tableros.AbstractTablero
+
 import java.util.Objects
 
 /** Clase que representa una carta de unidad de combate cuerpo a cuerpo en el juego Gwen't.
@@ -30,13 +32,7 @@ class CartaUnidadCuerpo(nombre: String, efecto: String, fuerza: Int)
    */
   override def hashCode: Int = Objects.hash(nombre, efecto, fuerza)
 
-  /**
-   * Metodo que permite añadir una carta de cuerpo a cuerpo al tablero de cuerpo a cuerpo.
-   * @param tablero
-   */
-  def anadirCartaCuerpo(tablero: AbstractTablero): Unit = {
-    tablero.anadirCarta(this)
-    println("Se añadió una Carta de tipo unidad de combate cuerpo a cuerpo a la zona de combate cuerpo a cuerpo.")
+  override def jugar(jugador: Jugador): Unit = {
+    jugador.jugarEnCuerpo(this)
   }
-
 }

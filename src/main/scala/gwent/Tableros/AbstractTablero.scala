@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.Tableros
 
-import gwent.Cartas.Carta
+import gwent.Cartas.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo}
 
 /**
  * Clase abstracta que representa un tablero.
@@ -10,17 +10,13 @@ import gwent.Cartas.Carta
  */
 
 
-abstract class AbstractTablero extends Tablero{
-  /**
-   * Método genérico que permite agregar una carta al tablero.
-   * @param carta : Carta que se desea agregar al tablero.
-   */
-  def anadirCarta(carta : Carta) : Unit = {}
+abstract class AbstractTablero {
+  def agregarAAsedio(carta: CartaUnidadAsedio): Unit
 
-  /**
-   * Método genérico que se sobreescribe y permite jugar una carta en el tablero.
-   * @param carta : Carta que se desea jugar en el tablero.
-   */
-  override def jugar(carta : Carta) : Unit = anadirCarta(carta)
+  def agregarACuerpo(carta: CartaUnidadCuerpo): Unit
+
+  def agregarADistancia(carta: CartaUnidadAsedio): Unit
+
+  def agregarAClima(carta: CartaClima): Unit
 
 }

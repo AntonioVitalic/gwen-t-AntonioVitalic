@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent
 
-import cl.uchile.dcc.gwent.Cartas.Carta
+import cl.uchile.dcc.gwent.Cartas.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia}
 import cl.uchile.dcc.gwent.Tableros.AbstractTablero
 
 import java.util.Objects
@@ -70,7 +70,23 @@ class Jugador (val _nombre: String, var _seccionTablero: AbstractTablero,
   def jugarCartaMano(carta : Carta): Unit = {
     val carta = _manoCartas.head
     _manoCartas = _manoCartas.tail
-    _seccionTablero.jugar(carta)
+    carta.jugar(this)
+  }
+
+  def jugarEnAsedio(carta: CartaUnidadAsedio): Unit = {
+    _seccionTablero.agregarAAsedio(carta)
+  }
+
+  def jugarEnCuerpo(carta: CartaUnidadCuerpo): Unit = {
+    _seccionTablero.agregarACuerpo(carta)
+  }
+
+  def jugarEnDistancia(carta: CartaUnidadDistancia): Unit = {
+    _seccionTablero.agregarADistancia(carta)
+  }
+
+  def jugarEnClima(carta: CartaClima): Unit = {
+    _seccionTablero.agregarAClima(carta)
   }
 
   // Getters

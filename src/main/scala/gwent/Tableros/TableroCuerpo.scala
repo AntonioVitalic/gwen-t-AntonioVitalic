@@ -13,11 +13,5 @@ import gwent.Cartas.{Carta, CartaUnidadCuerpo}
  * @author Antonio Vitalic
  */
 class TableroCuerpo(private var conjuntoCartas: List[CartaUnidadCuerpo]) extends AbstractTablero {
-  /**
-   * Método genérico que se overridea, el cual permite agregar una carta al tablero de cuerpo.
-   * @param carta : Carta que se desea agregar al tablero de cuerpo.
-   */
-  override def anadirCarta(carta: Carta): Unit = {
-    carta.anadirCartaCuerpo(this)
-  }
+
 }

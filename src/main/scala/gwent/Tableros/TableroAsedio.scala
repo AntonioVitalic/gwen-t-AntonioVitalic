@@ -13,11 +13,5 @@ import gwent.Cartas.{Carta, CartaUnidadAsedio}
  * @author Antonio Vitalic
  */
 class TableroAsedio(private var conjuntoCartas: List[CartaUnidadAsedio]) extends AbstractTablero {
-  /**
-   * Método genérico que se overridea, el cual permite agregar una carta al tablero de asedio.
-   * @param carta : Carta que se desea agregar al tablero de asedio.
-   */
-  override def anadirCarta(carta : Carta): Unit = {
-    carta.anadirCartaAsedio(this)
-  }
+
 }

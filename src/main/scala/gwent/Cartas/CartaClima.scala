@@ -1,7 +1,9 @@
 package cl.uchile.dcc
 package gwent.Cartas
 
+import cl.uchile.dcc.gwent.Jugador
 import cl.uchile.dcc.gwent.Tableros.AbstractTablero
+
 import java.util.Objects
 
 /** Clase que representa una carta de clima en el juego Gwen't.
@@ -31,13 +33,7 @@ class CartaClima (val nombre: String, val efecto: String) extends Carta{
    */
   override def hashCode: Int = Objects.hash(nombre, efecto)
 
-  /**
-   * Método que permite añadir una carta de clima al tablero de clima.
-   * @param tablero
-   */
-  def anadirCartaClima(tablero: AbstractTablero): Unit = {
-    tablero.anadirCarta(this)
-    println("Se añadió una Carta de clima a la zona de clima.")
+  override def jugar(jugador: Jugador): Unit = {
+    jugador.jugarEnClima(this)
   }
-
 }

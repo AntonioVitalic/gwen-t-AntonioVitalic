@@ -1,7 +1,9 @@
 package cl.uchile.dcc
 package gwent.Cartas
 
+import cl.uchile.dcc.gwent.Jugador
 import cl.uchile.dcc.gwent.Tableros.AbstractTablero
+
 import java.util.Objects
 
 /** Clase que representa una carta de unidad de combate a distancia en el juego Gwen't.
@@ -35,13 +37,7 @@ class CartaUnidadDistancia (nombre: String, efecto: String, fuerza: Int)
    */
   override def hashCode: Int = Objects.hash(nombre, efecto, fuerza)
 
-  /**
-   * Método que permite añadir una carta de distancia al tablero de distancia.
-   *
-   * @param tablero
-   */
-  def anadirCartaDistancia(tablero: AbstractTablero): Unit = {
-    tablero.anadirCarta(this)
-    println("Se añadió una Carta de tipo unidad de combate a distancia a la zona de combate a distancia.")
+  override def jugar(jugador: Jugador): Unit = {
+    jugador.jugarEnDistancia(this)
   }
 }

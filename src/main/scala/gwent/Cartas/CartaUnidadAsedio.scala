@@ -1,7 +1,9 @@
 package cl.uchile.dcc
 package gwent.Cartas
 
+import cl.uchile.dcc.gwent.Jugador
 import cl.uchile.dcc.gwent.Tableros.AbstractTablero
+
 import java.util.Objects
 
 /** Clase que representa una carta de unidad de combate de asedio en el juego Gwen't.
@@ -33,12 +35,7 @@ class CartaUnidadAsedio (nombre : String, efecto : String, fuerza : Int)
    */
   override def hashCode: Int = Objects.hash(nombre, efecto, fuerza)
 
-  /**
-   * Metodo que permite añadir una carta de asedio al tablero de asedio.
-   * @param tablero
-   */
-  def anadirCartaAsedio(tablero : AbstractTablero): Unit = {
-    tablero.anadirCarta(this)
-    println("Se añadió una Carta de tipo unidad de combate de asedio a la zona de asedio.")
+  override def jugar(jugador: Jugador): Unit = {
+    jugador.jugarEnAsedio(this)
   }
 }
