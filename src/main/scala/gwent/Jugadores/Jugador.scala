@@ -4,6 +4,9 @@ package gwent.Jugadores
 import gwent.Cartas._
 import gwent.Tableros.Tablero
 
+import cl.uchile.dcc.gwent.Observer.AbstractSubject
+import cl.uchile.dcc.gwent.LoseCondition
+
 import java.util.Objects
 import scala.collection.mutable.ListBuffer
 import scala.util.Random.shuffle
@@ -35,7 +38,8 @@ import scala.util.Random.shuffle
 abstract class Jugador (val _nombre: String, var _seccionTablero: Tablero,
                var _contadorGemas: Int = 2,
                private var _mazoCartas: ListBuffer[Carta],
-               private var _manoCartas: ListBuffer[Carta]) {
+               private var _manoCartas: ListBuffer[Carta])
+  extends AbstractSubject[LoseCondition] {
   assert(_contadorGemas >= 0, "La cantidad de gemas debe ser mayor o igual a 0")
 
   /**
@@ -52,7 +56,7 @@ abstract class Jugador (val _nombre: String, var _seccionTablero: Tablero,
       println("Robando carta del mazo")
       val carta = _mazoCartas.head
       _mazoCartas = _mazoCartas.tail
-      _manoCartas = carta :: _manoCartas
+      _manoCartas += carta
       carta
     }
 
@@ -72,6 +76,13 @@ abstract class Jugador (val _nombre: String, var _seccionTablero: Tablero,
     val carta = _manoCartas.head
     _manoCartas = _manoCartas.tail
     carta.jugar(this)
+  }
+
+  def pierdeGema(): Unit = {
+    _contadorGemas -= 1
+    if (_contadorGemas == 0) {
+      notifyObservers(new LoseCondition("perdió todas sus gemas :("))
+    }
   }
 
   def jugarEnAsedio(carta: CartaUnidadAsedio): Unit = {
@@ -98,7 +109,7 @@ abstract class Jugador (val _nombre: String, var _seccionTablero: Tablero,
    * Método getter para la sección del tablero.
    * @return Sección del tablero.
    */
-  def SeccionTablero(): AbstractTablero = _seccionTablero
+  def SeccionTablero(): Tablero = _seccionTablero
 
   /**
    * Método getter para el contador de gemas.
@@ -124,7 +135,7 @@ abstract class Jugador (val _nombre: String, var _seccionTablero: Tablero,
    * Método setter para la sección del tablero.
    * @param SeccionTablero : Sección del tablero.
    */
-  def SeccionTablero_=(SeccionTablero: AbstractTablero): Unit = _seccionTablero = SeccionTablero
+  def SeccionTablero_=(SeccionTablero: Tablero): Unit = _seccionTablero = SeccionTablero
 
   /**
    * Método setter para la el contador de gemas.
