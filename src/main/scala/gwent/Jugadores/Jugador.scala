@@ -75,19 +75,15 @@ abstract class Jugador (val _nombre: String, var _seccionTablero: Tablero,
   }
 
   def jugarEnAsedio(carta: CartaUnidadAsedio): Unit = {
-    _seccionTablero.agregarAAsedio(carta)
   }
 
   def jugarEnCuerpo(carta: CartaUnidadCuerpo): Unit = {
-    _seccionTablero.agregarACuerpo(carta)
   }
 
   def jugarEnDistancia(carta: CartaUnidadDistancia): Unit = {
-    _seccionTablero.agregarADistancia(carta)
   }
 
   def jugarEnClima(carta: CartaClima): Unit = {
-    _seccionTablero.agregarAClima(carta)
   }
 
   // Getters

@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.Tableros
 
-import gwent.Cartas.{CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo}
+import gwent.Cartas.{CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia}
 
 import cl.uchile.dcc.gwent.Jugadores.{CPU, Usuario}
 
@@ -15,13 +15,6 @@ import scala.collection.mutable.ListBuffer
 
 
 class Tablero {
-  def agregarAAsedio(carta: CartaUnidadAsedio): Unit
-
-  def agregarACuerpo(carta: CartaUnidadCuerpo): Unit
-
-  def agregarADistancia(carta: CartaUnidadAsedio): Unit
-
-  def agregarAClima(carta: CartaClima): Unit
 
   private var usuario = new Usuario("Usuario", this,_mazoCartas = ???, _manoCartas = ???)
   private var cpu = new CPU("CPU", this, _mazoCartas = ???, _manoCartas = ???)
@@ -35,5 +28,19 @@ class Tablero {
   private var cartasDistanciaCPU = ListBuffer[CartaUnidadAsedio]
 
   private var cartasClima = ListBuffer[CartaClima]
+
+  def agregarEnAsedioUsuario(carta: CartaUnidadAsedio): Unit = {}
+
+  def agregarEnCuerpoUsuario(carta: CartaUnidadCuerpo): Unit = {}
+
+  def agregarEnDistanciaUsuario(carta: CartaUnidadAsedio): Unit = {}
+
+  def agregarEnDistanciaCPU(carta: CartaUnidadDistancia): Unit = {}
+
+  def agregarEnCuerpoCPU(carta: CartaUnidadCuerpo): Unit = {}
+
+  def agregarEnAsedioCPU(carta: CartaUnidadAsedio): Unit = {}
+
+  def agregarEnClima(carta: CartaClima): Unit = {}
 
 }
