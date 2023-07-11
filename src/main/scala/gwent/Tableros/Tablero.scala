@@ -1,9 +1,10 @@
 package cl.uchile.dcc
 package gwent.Tableros
 
-import gwent.Cartas.{CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia}
+import gwent.Cartas.{Carta, CartaClima, CartaUnidadAsedio, CartaUnidadCuerpo, CartaUnidadDistancia}
 
 import cl.uchile.dcc.gwent.Jugadores.{CPU, Usuario}
+import gwent.Efectos.{ClimaDespejado, EscarchaMordiente, Habilidad, LluviaTorrencial, NieblaImpenetrable, RefuerzoMoral, VinculoEstrecho}
 
 import scala.collection.mutable.ListBuffer
 
@@ -29,37 +30,46 @@ class Tablero {
 
   private var cartasClima = ListBuffer[CartaClima]
 
-  def agregarEnAsedioUsuario(carta: CartaUnidadAsedio): Unit = {
-    if (carta.efecto == "Esfuerzo moral") {
-      for (i <- 0 to cartasAsedioUsuario.length) {
-        if (cartasAsedioUsuario(i).nombre == carta.nombre) {
-          // añade +1 a la fuerza de todas las carta
-          cartasAsedioUsuario(i).fuerza = cartasAsedioUsuario(i).fuerza + 1
-          carta.fuerza = carta.fuerza - 1 // excepto a sí misma
-        }
-      }
-    }
-    else if (carta.efecto == "Vínculo estrecho") {
-      for (i <- 0 to cartasAsedioUsuario.length) {
-        // Si ya existe una carta con el mismo nombre en la fila, duplica la fuerza de esa(s) carta(s),
-        //incluyéndose a sí misma.
-        if (cartasAsedioUsuario(i).nombre == carta.nombre) {
-          cartasAsedioUsuario(i).fuerza = cartasAsedioUsuario(i).fuerza * 2
-        }
-      }
-    }
+  val refuerzoMoral = new RefuerzoMoral()
+  val vinculoEstrecho = new VinculoEstrecho()
+
+  val escarchaMordiente = new EscarchaMordiente()
+  val nieblaImpenetrable = new NieblaImpenetrable()
+  val lluviaTorrencial = new LluviaTorrencial()
+  val climaDespejado = new ClimaDespejado()
+
+  def applyHabilidad(efecto: Habilidad, carta: Carta): Unit = {
+    efecto.apply(carta, this)
   }
 
-  def agregarEnCuerpoUsuario(carta: CartaUnidadCuerpo): Unit = {}
+  def agregarEnAsedioUsuario(carta: CartaUnidadAsedio): Unit = {
+    case refuerzoMoral: RefuerzoMoral => refuerzoMoral.apply(carta, cartasAsedioUsuario)
+    case vinculoEstrecho: VinculoEstrecho => vinculoEstrecho.apply(carta, cartasAsedioUsuario)
+    case _ => apply(carta, cartasAsedioUsuario)
+  }
 
-  def agregarEnDistanciaUsuario(carta: CartaUnidadAsedio): Unit = {}
+  def agregarEnCuerpoUsuario(carta: CartaUnidadCuerpo): Unit = {
+    apply(carta, cartasCuerpoUsuario)
+  }
 
-  def agregarEnDistanciaCPU(carta: CartaUnidadDistancia): Unit = {}
+  def agregarEnDistanciaUsuario(carta: CartaUnidadAsedio): Unit = {
+    apply(carta, cartasDistanciaUsuario)
+  }
 
-  def agregarEnCuerpoCPU(carta: CartaUnidadCuerpo): Unit = {}
+  def agregarEnDistanciaCPU(carta: CartaUnidadDistancia): Unit = {
+    apply(carta, cartasDistanciaCPU)
+  }
 
-  def agregarEnAsedioCPU(carta: CartaUnidadAsedio): Unit = {}
+  def agregarEnCuerpoCPU(carta: CartaUnidadCuerpo): Unit = {
+    apply(carta, cartasCuerpoCPU)
+  }
 
-  def agregarEnClima(carta: CartaClima): Unit = {}
+  def agregarEnAsedioCPU(carta: CartaUnidadAsedio): Unit = {
+    apply(carta, cartasAsedioCPU)
+  }
+
+  def agregarEnClima(): Unit = {
+    cartasClima.apply()
+  }
 
 }

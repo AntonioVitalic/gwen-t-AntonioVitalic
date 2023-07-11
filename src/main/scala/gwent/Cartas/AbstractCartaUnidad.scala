@@ -23,6 +23,10 @@ abstract class AbstractCartaUnidad protected(val nombre: String, val efecto: Str
    * Establecido inicialmente en la [[fuerza]] base de la carta.
    */
   var fuerzaActual: Int = fuerza
+
+  def anadeFuerza (n: Int): Unit = fuerzaActual += n
+
+  def setFuerza (n: Int): Unit = fuerzaActual = n
 }
 
 
