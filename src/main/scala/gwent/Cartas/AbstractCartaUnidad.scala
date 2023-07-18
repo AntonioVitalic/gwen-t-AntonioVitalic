@@ -24,8 +24,16 @@ abstract class AbstractCartaUnidad protected(val nombre: String, val efecto: Str
    */
   var fuerzaActual: Int = fuerza
 
+  /**
+   * Método que permite incrementar la fuerza actual de la carta.
+   * @param n: Cantidad de fuerza que se le sumará a la fuerza actual de la carta.
+   */
   def anadeFuerza (n: Int): Unit = fuerzaActual += n
 
+  /**
+   * Método que permite setear o definir la fuerza actual de la carta en cierta cantidad.
+   * @param n : Cantidad de fuerza que se le asignará a la fuerza actual de la carta.
+   */
   def setFuerza (n: Int): Unit = fuerzaActual = n
 }
 

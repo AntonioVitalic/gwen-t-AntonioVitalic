@@ -31,6 +31,10 @@ class CartaClima (val nombre: String, val efecto: String) extends Carta{
    */
   override def hashCode: Int = Objects.hash(nombre, efecto)
 
+  /**
+   * Método que permite al jugador jugar una carta de clima.
+   * @param jugador: Jugador que juega la carta.
+   */
   override def jugar(jugador: Jugador): Unit = {
     jugador.jugarEnClima(this)
   }

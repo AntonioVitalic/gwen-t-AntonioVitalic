@@ -35,6 +35,11 @@ class CartaUnidadDistancia (nombre: String, efecto: String, fuerza: Int)
    */
   override def hashCode: Int = Objects.hash(nombre, efecto, fuerza)
 
+  /**
+   * Método que permite al jugador jugar una carta de unidad de combate a distancia.
+   *
+   * @param jugador: Jugador que juega la carta.
+   */
   override def jugar(jugador: Jugador): Unit = {
     jugador.jugarEnDistancia(this)
   }

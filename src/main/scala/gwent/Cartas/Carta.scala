@@ -31,6 +31,9 @@ trait Carta {
    */
   def efecto(): String
 
+  /** Método que permite jugar una carta.
+   * @param jugador: Jugador que jugará la carta.
+   */
   def jugar(jugador: Jugador): Unit
 
 }

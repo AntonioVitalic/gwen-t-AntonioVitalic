@@ -22,9 +22,6 @@ import scala.util.Random.shuffle
  * @param _mazoCartas: Mazo de cartas que tiene el Jugador
  * @param _manoCartas: Cartas que tiene en la mano el Jugador
  *
- * @constructor Crea un nuevo Jugador con su nombre, seccion del tablero, contador de gemas, mazo de cartas
- *              y mano de cartas.
- *
  * @example
  * {{{
  * val Jugador = new Jugador("Jugador", "Cuerpo a cuerpo", 2, List[Carta](), List[Carta]())
@@ -78,6 +75,10 @@ abstract class Jugador (val _nombre: String, var _seccionTablero: Tablero,
     carta.jugar(this)
   }
 
+  /**
+   * Método que permite al jugador perder una gema.
+   * Además se notifica a los observadores si el jugador pierde todas sus gemas.
+   */
   def pierdeGema(): Unit = {
     _contadorGemas -= 1
     if (_contadorGemas == 0) {
@@ -85,15 +86,35 @@ abstract class Jugador (val _nombre: String, var _seccionTablero: Tablero,
     }
   }
 
+  /**
+   * Método que permite al jugador, jugar una carta de tipo unidad de asedio, en
+   * la zona de asedio del tablero.
+   * @param carta: Carta de Unidad de tipo Asedio que se jugará.
+   */
   def jugarEnAsedio(carta: CartaUnidadAsedio): Unit = {
   }
 
+  /**
+   * Método que permite al jugador, jugar una carta de tipo unidad de cuerpo a cuerpo, en
+   * la zona de cuerpo a cuerpo del tablero.
+   * @param carta: Carta de Unidad de tipo Cuerpo que se jugará.
+   */
   def jugarEnCuerpo(carta: CartaUnidadCuerpo): Unit = {
   }
 
+  /**
+   * Método que permite al jugador, jugar una carta de tipo unidad de distancia, en
+   * la zona de distancia del tablero.
+   * @param carta: Carta de Unidad de tipo Distancia que se jugará.
+   */
   def jugarEnDistancia(carta: CartaUnidadDistancia): Unit = {
   }
 
+  /**
+   * Método que permite al jugador, jugar una carta de tipo clima, en
+   * la zona de clima del tablero.
+   * @param carta: Carta de tipo Clima que se jugará.
+   */
   def jugarEnClima(carta: CartaClima): Unit = {
   }
 
