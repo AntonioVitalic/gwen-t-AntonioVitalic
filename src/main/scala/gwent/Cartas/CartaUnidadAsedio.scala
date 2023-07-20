@@ -25,7 +25,6 @@ import java.util.Objects
  */
 class CartaUnidadAsedio (nombre : String, efecto : String, fuerza : Int)
   extends AbstractCartaUnidad (nombre, efecto, fuerza) {
-  // Efecto puede ser "Refuerzo moral" o "Vínculo estrecho"
 
   /**
    * Metodo que permite comparar dos objetos de tipo CartaUnidadAsedio.

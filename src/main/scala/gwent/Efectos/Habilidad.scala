@@ -17,5 +17,5 @@ trait Habilidad {
    * @param self: Carta que aplica el efecto
    * @param zona: Zona en la que se aplica el efecto
    */
-  def apply(self: Carta, zona: Tablero)
+  def apply(self: Carta, zona: Tablero) : Unit
 }

@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 package gwent.Efectos
-import gwent.Cartas.Carta
+import gwent.Cartas.{Carta, CartaUnidadAsedio}
 
 import scala.collection.mutable.ListBuffer
 
@@ -9,20 +9,21 @@ import scala.collection.mutable.ListBuffer
  * Se extiende de la interfaz Habilidad.
  * Se aplica a cartas de tipo clima.
  *
- * El efecto "Lluvia torrencial" consiste en establecer el valor de fuerza de todas
- * las cartas de combate a distancia en 1.
+ * El efecto "Lluvia torrencial" consiste en establecer el valor de todas las cartas de asedio a 1.
+
  *
  */
 
-class LluviaTorrencial extends Habilidad {
+case class LluviaTorrencial() extends Habilidad {
 
   /**
    * Método que permite aplicar el efecto de lluvia torrencial.
-   * El efecto "Lluvia torrencial" consiste en establecer el valor de fuerza de todas
-   * las cartas de combate a distancia en 1.
+   * El efecto "Lluvia torrencial" consiste en establecer el valor de todas las cartas de asedio a 1.
    *
    * @param self
    * @param zona
    */
-  override def apply(self: Carta, zona: ListBuffer[Carta]): Unit = ???
+  def apply(self: Carta, zona: ListBuffer[CartaUnidadAsedio]): Unit = {
+    zona.foreach(_.setFuerza(1))
+  }
 }

@@ -21,6 +21,14 @@ import cl.uchile.dcc.gwent.Jugadores.Jugador
  * @author Antonio Vitalic
  */
 trait Carta {
+
+  /**
+   * Método que permite eliminar el efecto de clima de todas las
+   * cartas de clima presentes en la zona de clima.
+   */
+  def eliminaEfectoClima(): Unit = {
+  }
+
   /** El nombre de la carta.
    * Es una propiedad inmutable.
    */

@@ -30,8 +30,8 @@ import scala.collection.mutable.ListBuffer
  * @author Antonio Vitalic
  */
 
-class Usuario (_nombre: String, _seccionTablero: Tablero, _mazoCartas: ListBuffer[Carta],
-               _manoCartas: ListBuffer[Carta]) extends Jugador (_nombre, _seccionTablero,
+class Usuario (_nombre: String, _seccionTablero: Tablero, _contadorGemas: Int, _mazoCartas: ListBuffer[Carta],
+               _manoCartas: ListBuffer[Carta]) extends Jugador (_nombre, _seccionTablero, _contadorGemas,
   _mazoCartas, _manoCartas) {
 
   /**

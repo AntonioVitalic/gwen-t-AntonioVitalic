@@ -15,7 +15,7 @@ import scala.collection.mutable.ListBuffer
  * @constructor Crea un objeto con el que se implementa el efecto de clima despejado,
  *              asociado a una carta de tipo Clima.
  */
-class ClimaDespejado extends Habilidad {
+case class ClimaDespejado() extends Habilidad {
 
   /**
    * Método que permite aplicar el efecto de clima despejado.
@@ -25,5 +25,9 @@ class ClimaDespejado extends Habilidad {
    * @param self: Carta que aplica el efecto
    * @param zona: Zona en la que se aplica el efecto
    */
-  override def apply(self: Carta, zona: ListBuffer[Carta]): Unit = {}
+
+  def apply(self: Carta, zona: ListBuffer[Carta]): Unit = {
+    // elimina los efectos climaticos
+    zona.foreach(_.eliminaEfectoClima())
+  }
 }

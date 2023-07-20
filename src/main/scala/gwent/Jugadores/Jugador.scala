@@ -142,13 +142,13 @@ abstract class Jugador (val _nombre: String, var _seccionTablero: Tablero,
    * Método getter para el mazo de cartas.
    * @return Mazo de cartas.
    */
-  def MazoCartas(): List[Carta] = _mazoCartas
+  def MazoCartas(): ListBuffer[Carta] = _mazoCartas
 
   /**
    * Método getter para la mano de cartas.
    * @return Mano de cartas.
    */
-  def ManoCartas(): List[Carta] = _manoCartas
+  def ManoCartas(): ListBuffer[Carta] = _manoCartas
 
   // Setters
 
@@ -169,11 +169,11 @@ abstract class Jugador (val _nombre: String, var _seccionTablero: Tablero,
    * Método setter para el mazo de cartas.
    * @param MazoCartas : Mazo de cartas.
    */
-  def MazoCartas_=(MazoCartas: List[Carta]): Unit = _mazoCartas = MazoCartas
+  def MazoCartas_=(MazoCartas: ListBuffer[Carta]): Unit = _mazoCartas = MazoCartas
 
   /**
    * Método setter para la mano de cartas.
    * @param ManoCartas : Mano de cartas.
    */
-  def ManoCartas_=(ManoCartas: List[Carta]): Unit = _manoCartas = ManoCartas
+  def ManoCartas_=(ManoCartas: ListBuffer[Carta]): Unit = _manoCartas = ManoCartas
 }
