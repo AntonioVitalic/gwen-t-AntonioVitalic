@@ -10,7 +10,7 @@ import gwent.Tableros.Tablero
  * Se aplica el patrón de diseño Null Object.
  */
 
-class EfectoNulo extends Habilidad{
+case class EfectoNulo() extends Habilidad{
 
   /**
    * Método que permite aplicar el efecto de una carta.

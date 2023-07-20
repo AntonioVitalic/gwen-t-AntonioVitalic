@@ -13,7 +13,7 @@ import scala.collection.mutable.ListBuffer
  * excepto a sí misma.
  */
 
-class RefuerzoMoral extends Habilidad {
+case class RefuerzoMoral() extends Habilidad {
   /**
    * Método que permite aplicar el efecto de refuerzo moral.
    * El efecto "Refuerzo moral" consiste en añadir +1 a la fuerza de todas las cartas en su fila,
@@ -22,7 +22,7 @@ class RefuerzoMoral extends Habilidad {
    * @param self
    * @param zona
    */
-  override def apply(self: AbstractCartaUnidad, zona: ListBuffer[AbstractCartaUnidad]): Unit = {
+  def apply(self: AbstractCartaUnidad, zona: ListBuffer[AbstractCartaUnidad]): Unit = {
     zona.filterNot(_ == self).foreach(self => self.anadeFuerza(1))
   }
 }

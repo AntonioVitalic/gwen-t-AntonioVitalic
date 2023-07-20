@@ -21,6 +21,8 @@ import cl.uchile.dcc.gwent.Jugadores.Jugador
  * @author Antonio Vitalic
  */
 trait Carta {
+  def eliminaEfectoClima(): U_ = ???
+
   /** El nombre de la carta.
    * Es una propiedad inmutable.
    */

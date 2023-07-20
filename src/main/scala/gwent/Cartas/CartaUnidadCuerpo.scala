@@ -24,6 +24,7 @@ import java.util.Objects
  */
 class CartaUnidadCuerpo(nombre: String, efecto: String, fuerza: Int)
   extends AbstractCartaUnidad (nombre, efecto, fuerza) {
+
   /**
    * Metodo que permite comparar dos objetos de tipo CartaUnidadCuerpo.
    * @return

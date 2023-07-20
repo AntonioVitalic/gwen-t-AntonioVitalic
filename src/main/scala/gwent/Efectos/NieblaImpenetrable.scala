@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 package gwent.Efectos
-import gwent.Cartas.Carta
+import gwent.Cartas.{Carta, CartaUnidadDistancia}
 
 import scala.collection.mutable.ListBuffer
 
@@ -13,7 +13,7 @@ import scala.collection.mutable.ListBuffer
  * las cartas de combate a distancia en 1.
  */
 
-class NieblaImpenetrable extends Habilidad {
+case class NieblaImpenetrable() extends Habilidad {
 
   /**
    * Método que permite aplicar el efecto de niebla impenetrable.
@@ -23,5 +23,7 @@ class NieblaImpenetrable extends Habilidad {
    * @param self
    * @param zona
    */
-  override def apply(self: Carta, zona: ListBuffer[Carta]): Unit = {}
+  def apply(self: Carta, zona: ListBuffer[CartaUnidadDistancia]): Unit = {
+    zona.foreach(_.setFuerza(1))
+  }
 }
