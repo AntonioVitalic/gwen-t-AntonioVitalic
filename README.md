@@ -12,7 +12,7 @@ Este repositorio corresponde al proyecto consistente en un clon (simplificado)
 del juego de cartas [_Gwent_](https://www.playgwent.com/en) desarrollado por [_CD PROJEKT RED_](https://cdprojektred.com/en/) para su franquicia de videojuegos The Witcher.
 A grandes rasgos el juego tendrá dos jugadores, uno controlado por el usuario y otro controlado por la computadora.
 Cada jugador tendrá un mazo y una mano de cartas que puede jugar en un tablero en una partida al mejor de tres
-rondas, según lo señalado en el documento [Enunciado Proyecto V1.0.2.pdf](https://www.u-cursos.cl/ingenieria/2023/1/CC3002/2/material_docente/detalle?id=6465061)
+rondas, según lo señalado en el documento [Enunciado Proyecto V1.0.2.pdf](https://drive.google.com/file/d/1QPvBIBmWlNHGXZGDxuHdWbWi7iHHFioq/view?usp=sharing)
 (en adelante, el "documento") en material docente del curso.
 
 ## Descripción
